@@ -25,4 +25,6 @@
     <string name="expiry_date">Expiry Date</string>
     <string name="cvv_code">CVV Code</string>
     <string name="add_card">ADD CARD</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
 </resources>

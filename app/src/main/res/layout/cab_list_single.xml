@@ -30,13 +30,13 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:fontFamily="@font/pt_sans"
-        android:text="Name" />
+        android:text="@string/name" />
 
     <TextView
         android:id="@+id/car_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Price"
+        android:text="@string/price"
         android:textAlignment="center"
         android:fontFamily="@font/pt_sans"
         app:layout_constraintBottom_toBottomOf="parent"
