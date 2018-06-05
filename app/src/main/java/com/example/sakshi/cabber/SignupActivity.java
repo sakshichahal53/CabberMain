@@ -1,4 +1,4 @@
-package com.example.sakshi.cabber.activities;
+package com.example.sakshi.cabber;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -7,12 +7,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.sakshi.cabber.fragments.FragmentSignupCode;
-import com.example.sakshi.cabber.fragments.FragmentSignupDetails;
-import com.example.sakshi.cabber.fragments.FragmentSignupVisa;
-import com.example.sakshi.cabber.R;
-import com.example.sakshi.cabber.adapters.SignupFragmentAdapter;
 
 public class SignupActivity extends AppCompatActivity {
 

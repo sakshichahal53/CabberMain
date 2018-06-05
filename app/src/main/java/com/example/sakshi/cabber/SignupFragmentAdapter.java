@@ -1,4 +1,4 @@
-package com.example.sakshi.cabber.adapters;
+package com.example.sakshi.cabber;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

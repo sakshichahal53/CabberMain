@@ -1,4 +1,4 @@
-package com.example.sakshi.cabber.activities;
+package com.example.sakshi.cabber;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -31,7 +31,7 @@ public class ChooseCabActivity extends AppCompatActivity implements OnMapReadyCa
 
     private RecyclerView recycler_view;
     private List<com.example.sakshi.cabber.ModelCar> cab_list = new ArrayList<>();
-    private com.example.sakshi.cabber.ChooseCabAdapter adapter;
+    private ChooseCabAdapter adapter;
 
 
     @Override
@@ -55,19 +55,19 @@ public class ChooseCabActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
     public void prepare_cab_data() {
-        com.example.sakshi.cabber.ModelCar car1 = new com.example.sakshi.cabber.ModelCar("GoShare", "$45", "$50", R.drawable.one_inactive);
+        ModelCar car1 = new ModelCar("GoShare", "$45", "$50", R.drawable.one_inactive);
         cab_list.add(car1);
 
 
-        com.example.sakshi.cabber.ModelCar car2 = new com.example.sakshi.cabber.ModelCar("GoMeOnly", "$65", "$80", R.drawable.three_active);
+       ModelCar car2 = new ModelCar("GoMeOnly", "$65", "$80", R.drawable.three_active);
         cab_list.add(car2);
 
 
-        com.example.sakshi.cabber.ModelCar car3 = new com.example.sakshi.cabber.ModelCar("GoBigger", "$85", "$95", R.drawable.two_inactive);
+        ModelCar car3 = new ModelCar("GoBigger", "$85", "$95", R.drawable.two_inactive);
         cab_list.add(car3);
 
 
-        com.example.sakshi.cabber.ModelCar car4 = new com.example.sakshi.cabber.ModelCar("GoFast", "$100", "$120", R.drawable.four_inactive);
+       ModelCar car4 = new ModelCar("GoFast", "$100", "$120", R.drawable.four_inactive);
         cab_list.add(car4);
     }
 
