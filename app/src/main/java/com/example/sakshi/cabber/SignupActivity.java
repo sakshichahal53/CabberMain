@@ -5,13 +5,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class SignupActivity extends AppCompatActivity {
 
-    private ViewPager m_viewpager;
-
+    TextView tv_registered;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,32 +27,16 @@ public class SignupActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        tv_registered=findViewById(R.id.tv_registered);
+        Spannable already_reg = new SpannableString("Already Registered ? ");
+        already_reg.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.text_Color)), 0, already_reg.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv_registered.setText(already_reg);
 
-        m_viewpager = findViewById(R.id.viewPager);
-        set_viewpager(m_viewpager);
-    }
-
-    public void set_viewpager(ViewPager viewpager) {
-        SignupFragmentAdapter adapter = new SignupFragmentAdapter(getSupportFragmentManager());
-        adapter.add_fragment(new FragmentSignupCode());
-        adapter.add_fragment(new FragmentSignupDetails());
-        adapter.add_fragment(new FragmentSignupVisa());
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.setupWithViewPager(m_viewpager, true);
-
-        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            View tab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(i);
-            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) tab.getLayoutParams();
-            p.setMargins(0, 0, 200, 0);
-            tab.requestLayout();
-        }
-        viewpager.setAdapter(adapter);
-
+        Spannable signin = new SpannableString("Sign in");
+        signin.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorAccent)), 0, signin.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv_registered.append(signin);
 
     }
 
-    public void set_nav_pager(int fragment_number) {
-        m_viewpager.setCurrentItem(fragment_number);
-    }
+
 }
