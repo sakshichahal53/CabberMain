@@ -1,6 +1,5 @@
-package com.example.sakshi.cabber.Fragments;
+package com.example.sakshi.cabber.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
