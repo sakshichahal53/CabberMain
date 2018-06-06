@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sakshi.cabber.WhereToGoActivity">
+    tools:context="com.example.sakshi.cabber.WhereToGoActivity"
+    android:fitsSystemWindows="true">
 
-</android.support.constraint.ConstraintLayout>
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map_to_go"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.sakshi.cabber.WhereToGoActivity"/>
+
+
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="302dp"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:weightSum="7"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff">
+        <View
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:background="@drawable/where_togo_dot"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Where to go?"
+            android:background="@null"
+            android:textColor="#393939"
+            android:textSize="11sp"
+            android:paddingTop="14dp"
+            android:layout_marginLeft="12dp"
+            android:fontFamily="@font/montserrat_regular"
+            />
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="80dp"
+            android:src="@drawable/map_nav"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

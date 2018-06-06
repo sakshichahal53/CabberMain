@@ -12,11 +12,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
-
 
     <application
         android:allowBackup="true"
@@ -25,18 +23,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
-
-        </activity>
-
-        <activity android:name=".SignupActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".ChooseCabActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".ChooseCabActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -45,7 +34,17 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDUX0mKbLAHawb5ZDidL1n9wEVSg8rKqVs" />
 
+        <activity android:name=".SignupCodeActivity" />
+        <activity android:name=".SignupCardActivity" />
+        <activity android:name=".checkLayout">
 
+        </activity>
+        <activity android:name=".ReferralCodeActivity" />
+        <activity android:name=".WhereToGoActivity">  <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
     </application>
 
 </manifest>

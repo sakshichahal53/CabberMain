@@ -1,6 +1,7 @@
 package com.example.sakshi.cabber;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.sakshi.cabber.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,6 +21,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -29,6 +32,7 @@ import java.util.List;
 public class ChooseCabActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnPolylineClickListener,
         GoogleMap.OnPolygonClickListener {
 
+    private final String TAG="ChooseCabActivity";
     private RecyclerView recycler_view;
     private List<com.example.sakshi.cabber.ModelCar> cab_list = new ArrayList<>();
     private ChooseCabAdapter adapter;
@@ -74,6 +78,19 @@ public class ChooseCabActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     public void onMapReady(final GoogleMap googleMap) {
 
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.style_json));
+
+            if (!success) {
+                Log.e(TAG, "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e(TAG, "Can't find style. Error: ", e);
+        }
 
         googleMap.clear();
 
@@ -93,11 +110,13 @@ public class ChooseCabActivity extends AppCompatActivity implements OnMapReadyCa
                         new LatLng(28.610796, 77.211645),
                         new LatLng(28.611502, 77.210336)));
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(28.613063, 77.227342), 4));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(28.613063, 77.227342), 2));
 
-        googleMap.setMinZoomPreference(15.0f);
+        googleMap.setMinZoomPreference(10.0f);
         googleMap.setOnPolylineClickListener(this);
         googleMap.setOnPolygonClickListener(this);
+
+
 
     }
 
