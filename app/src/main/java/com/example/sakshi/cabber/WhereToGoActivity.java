@@ -16,6 +16,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -43,11 +47,32 @@ public class WhereToGoActivity extends FragmentActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_to_go);
         mapFragment.getMapAsync(this);
 
-        FragmentManager fm = getFragmentManager();
-        DialogFragmentReferral dFragment = new DialogFragmentReferral();
-        dFragment.show(fm,"Dialog Fragment");
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            FragmentManager fm = getFragmentManager();
+            DialogFragmentReferral dFragment = new DialogFragmentReferral();
+            dFragment.show(fm, "Dialog Fragment");                   //For adding dialogueFragment
         }
+
+
+////        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+////                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+//
+//        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+//            @Override
+//            public void onPlaceSelected(Place place) {
+//                // TODO: Get info about the selected place.
+//                Log.i(TAG, "Place: " + place.getName());
+//            }
+//
+//            @Override
+//            public void onError(Status status) {
+//                // TODO: Handle the error.
+//                Log.i(TAG, "An error occurred: " + status);
+//            }
+//        });
+//
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -66,6 +91,7 @@ public class WhereToGoActivity extends FragmentActivity implements OnMapReadyCal
 
         googleMap.setMinZoomPreference(15.0f);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(28.700939 ,77.272102), 4));
+
 
     }
 }

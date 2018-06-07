@@ -36,13 +36,14 @@
 
         <activity android:name=".SignupCodeActivity" />
         <activity android:name=".SignupCardActivity" />
-        <activity android:name=".WhereToGoActivity">
-        </activity>
-        <activity android:name=".SplashScreen">
+        <activity android:name=".WhereToGoActivity"></activity>
+        <activity android:name=".SplashScreen" />
+        <activity android:name=".FareAndRateActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

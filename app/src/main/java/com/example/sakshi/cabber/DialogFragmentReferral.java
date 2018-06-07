@@ -1,6 +1,7 @@
 package com.example.sakshi.cabber;
 
 import android.app.DialogFragment;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,9 @@ public class DialogFragmentReferral extends DialogFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.referral_code, container,false);
-        getDialog().setTitle("DialogFragment Tutorial");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            getDialog().setTitle("DialogFragment Tutorial");
+        }
 
         return rootView;
     }

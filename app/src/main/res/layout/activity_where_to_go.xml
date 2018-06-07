@@ -12,6 +12,7 @@
         android:layout_height="25dp"
         />
 
+
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map_to_go"
@@ -24,11 +25,25 @@
     <LinearLayout
         android:layout_marginTop="100dp"
         android:layout_width="302dp"
-        android:layout_height="40dp"
+        android:layout_height="80dp"
         android:orientation="horizontal"
         android:weightSum="7"
         android:layout_centerHorizontal="true"
         android:background="#ffffff">
+
+        <!--
+                <fragment
+                    android:id="@+id/place_autocomplete_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    />
+        -->
+
+        <EditText
+            android:id="@+id/ed_search_place"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
         <View
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
