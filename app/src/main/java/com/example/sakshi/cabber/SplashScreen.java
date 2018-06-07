@@ -3,11 +3,11 @@ package com.example.sakshi.cabber;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class checkLayout extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.referral_code);
+        setContentView(R.layout.activity_splash_screen);
     }
 }
