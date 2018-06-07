@@ -8,6 +8,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,8 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 
 public class WhereToGoActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle action_bar_drawer_toggle;
     private View statusbar;
     private static final String TAG="WhereToGoActivity";
 
@@ -47,6 +51,13 @@ public class WhereToGoActivity extends FragmentActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_to_go);
         mapFragment.getMapAsync(this);
 
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        action_bar_drawer_toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(action_bar_drawer_toggle);
+        action_bar_drawer_toggle.syncState();
+
+        //   getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             FragmentManager fm = getFragmentManager();

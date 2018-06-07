@@ -36,11 +36,17 @@
 
         <activity android:name=".SignupCodeActivity" />
         <activity android:name=".SignupCardActivity" />
-        <activity android:name=".WhereToGoActivity"></activity>
+        <activity android:name=".WhereToGoActivity">
+
+        </activity>
         <activity android:name=".SplashScreen" />
-        <activity android:name=".FareAndRateActivity">
+        <activity android:name=".FareAndRateActivity"></activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
