@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.sakshi.cabber.WhereToGoActivity"
     android:fitsSystemWindows="true">
+    <View
+        android:id="@+id/status_bar_map"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        />
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -28,7 +33,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:layout_height="11dp"
             android:background="@drawable/where_togo_dot"
             android:layout_gravity="center"/>
 
@@ -40,7 +45,7 @@
             android:background="@null"
             android:textColor="#393939"
             android:textSize="11sp"
-            android:paddingTop="14dp"
+            android:paddingTop="12dp"
             android:layout_marginLeft="12dp"
             android:fontFamily="@font/montserrat_regular"
             />

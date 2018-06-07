@@ -36,13 +36,11 @@
 
         <activity android:name=".SignupCodeActivity" />
         <activity android:name=".SignupCardActivity" />
-        <activity android:name=".checkLayout">
-
+        <activity android:name=".WhereToGoActivity">
         </activity>
-        <activity android:name=".ReferralCodeActivity" />
-        <activity android:name=".WhereToGoActivity">  <intent-filter>
+        <activity android:name=".SplashScreen">
+            <intent-filter>
             <action android:name="android.intent.action.MAIN" />
-
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
     </application>

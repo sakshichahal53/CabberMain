@@ -1,5 +1,6 @@
 package com.example.sakshi.cabber;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +11,13 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SignupActivity extends AppCompatActivity {
 
-    TextView tv_registered;
+    private Button btn_signup;
+    private TextView tv_registered;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,14 @@ public class SignupActivity extends AppCompatActivity {
         Spannable signin = new SpannableString("Sign in");
         signin.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorAccent)), 0, signin.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         tv_registered.append(signin);
+
+        btn_signup=findViewById(R.id.btn_signup);
+        btn_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignupActivity.this,SignupCodeActivity.class));
+            }
+        });
 
     }
 
