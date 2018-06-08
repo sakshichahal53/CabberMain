@@ -41,11 +41,12 @@
         <activity android:name=".FareAndRateActivity" />
         <activity
             android:name=".ProfileActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".HelpActivity" />
         <activity android:name=".ReferNowActivity">
+
+        </activity>
+        <activity android:name=".PaymentsActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
