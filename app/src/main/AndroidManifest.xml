@@ -36,19 +36,22 @@
 
         <activity android:name=".SignupCodeActivity" />
         <activity android:name=".SignupCardActivity" />
-        <activity android:name=".WhereToGoActivity"></activity>
+        <activity android:name=".WhereToGoActivity" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".FareAndRateActivity" />
         <activity
             android:name=".ProfileActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".ReferNowActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".HelpActivity"></activity>
     </application>
 
 </manifest>

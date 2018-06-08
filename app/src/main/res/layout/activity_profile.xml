@@ -32,19 +32,19 @@
 
             <View
                 android:layout_marginTop="226dp"
-                android:layout_marginLeft="340dp"
+                android:layout_marginLeft="287dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:foregroundGravity="right"
                 android:background="@drawable/round_button_view" />
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
                 android:src="@drawable/ic_create_black_24dp"
                 android:backgroundTint="@color/colorAccent"
-                android:layout_marginTop="228dp"
-                android:layout_marginLeft="342dp" />
+                android:layout_marginTop="242dp"
+                android:layout_marginLeft="302dp" />
         </RelativeLayout>
 
 
