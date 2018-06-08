@@ -41,12 +41,13 @@
         <activity android:name=".FareAndRateActivity" />
         <activity
             android:name=".ProfileActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".HelpActivity" />
-        <activity android:name=".ReferNowActivity">
+        <activity android:name=".ReferNowActivity"></activity>
+        <activity android:name=".PaymentsActivity">
 
         </activity>
-        <activity android:name=".PaymentsActivity">
+        <activity android:name=".RippleEffectActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
