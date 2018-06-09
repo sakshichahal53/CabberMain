@@ -66,6 +66,48 @@
             tools:context="com.example.sakshi.cabber.WhereToGoActivity" />
 
 
+        <LinearLayout
+            android:id="@+id/linear_layout_from"
+            android:layout_marginTop="68dp"
+            android:layout_width="302dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="7"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffff"
+            android:visibility="visible">
+
+            <View
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:layout_width="40dp"
+                android:layout_height="11dp"
+                android:background="@drawable/where_togo_dot"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_gravity="center" />
+
+            <AutoCompleteTextView
+                android:layout_weight="3"
+                android:id="@+id/from_tv_autocomplete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="To"
+                android:background="@null"
+                android:textColor="#cfcfcf"
+                android:textSize="11sp"
+                android:textAlignment="viewStart"
+                android:layout_marginLeft="12dp"
+                android:fontFamily="@font/montserrat_regular" />
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="80dp"
+                android:src="@drawable/map_nav" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_marginTop="100dp"
@@ -84,15 +126,16 @@
                 android:background="@drawable/where_togo_dot"
                 android:layout_gravity="center" />
 
-            <TextView
+            <AutoCompleteTextView
+                android:id="@+id/to_tv_autocomplete"
                 android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Where to go?"
+                android:hint="Where to go?"
                 android:background="@null"
                 android:textColor="#393939"
                 android:textSize="11sp"
-                android:paddingTop="12dp"
+                android:textAlignment="viewStart"
                 android:layout_marginLeft="12dp"
                 android:fontFamily="@font/montserrat_regular" />
 
@@ -113,6 +156,420 @@
             android:background="@drawable/ic_menu_black_24dp"
             android:layout_width="20dp"
             android:layout_height="18dp" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="76dp"
+            android:layout_width="307dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Driver Info"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="11sp"
+                    android:textColor="#191919"
+                    android:layout_marginLeft="22dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cancel Ride"
+                    android:layout_marginLeft="135dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="11sp"
+                    android:textColor="@color/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="60dp"
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/man_on_faresummary"
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:layout_marginLeft="22dp"
+                    android:background="@drawable/input_merged_edittext" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp">
+
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="18dp">
+
+                        <TextView
+                            android:layout_weight="4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Davinder Singh"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:fontFeatureSettings="15sp"
+                            android:textColor="@color/black"
+                            android:letterSpacing="0.04" />
+
+                        <ImageButton
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:layout_width="6dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:weightSum="5"
+                        android:layout_marginTop="9dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_weight="2"
+                            android:text="4.7"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="32dp"
+                            android:layout_height="wrap_content" />
+
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:numStars="5"
+                            android:rating="4.5"
+                            android:layout_weight="1"
+                            android:scaleX="0.3"
+                            android:scaleY="0.3"
+                            android:paddingTop="6dp"
+                            android:transformPivotX="0dp"
+                            android:stepSize="0.1" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="132dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Hyundai WagonR"
+                    android:textSize="11sp"
+                    android:layout_marginLeft="23dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Arriving in"
+                    android:textSize="11sp"
+                    android:layout_marginLeft="74dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="152dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:layout_weight="1"
+                    android:text="DL 1 ZA 5887"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="23dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:layout_weight="1"
+                    android:text="04 mins"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="74dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="200dp"
+                android:textSize="11sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"
+                android:text="CONTACT"
+                android:background="@drawable/button_background"
+                android:layout_width="270dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:visibility="gone"
+            android:layout_width="307dp"
+            android:layout_height="233dp"
+            android:layout_marginTop="331dp"
+            android:layout_centerHorizontal="true">
+
+            <View
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="75dp"
+                android:layout_width="0.5dp"
+                android:layout_height="47dp" />
+
+            <TextView
+                android:text="Trip Info"
+                android:textColor="#191919"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="11sp"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+
+                android:layout_marginTop="61dp"
+                android:weightSum="4"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="3dp"
+                    android:tint="@color/colorAccent"
+                    android:src="@drawable/where_togo_dot" />
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textSize="11sp"
+                        android:text="From"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <TextView
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textSize="11sp"
+                        android:textColor="@color/black"
+                        android:text="Nevak Ave, Journal Square NJ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="117dp"
+                android:weightSum="4"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="3dp"
+                    android:src="@drawable/where_togo_dot" />
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textSize="11sp"
+                        android:text="To"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <TextView
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textSize="11sp"
+                        android:textColor="@color/black"
+                        android:text="Sip Ave, Journal Square NJ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="183dp">
+
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:textColor="#191919"
+                    android:text="Distance"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:textColor="#191919"
+                    android:text="Arrival"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:textColor="#191919"
+                    android:text="Departure"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:weightSum="3"
+                android:layout_marginTop="203dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="8km"
+                    android:layout_marginLeft="14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="12:38 pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="01:00 pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:visibility="gone"
+            android:layout_width="307dp"
+            android:layout_marginTop="570dp"
+            android:layout_height="62dp"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="23dp"
+                android:textSize="11sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_marginTop="33dp"
+                android:layout_marginLeft="23dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/black"
+                android:text="Debit Card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="$70.00"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_gravity="end"
+                android:layout_marginRight="21dp" />
+
+        </android.support.v7.widget.CardView>
+
 
     </RelativeLayout>
 
