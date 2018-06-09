@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.android.gms.common.api.Status;
@@ -29,7 +32,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 
-public class WhereToGoActivity extends FragmentActivity implements OnMapReadyCallback {
+public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle action_bar_drawer_toggle;
@@ -57,7 +60,12 @@ public class WhereToGoActivity extends FragmentActivity implements OnMapReadyCal
         drawerLayout.addDrawerListener(action_bar_drawer_toggle);
         action_bar_drawer_toggle.syncState();
 
-        //   getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);            //REmoving statusbar from Activity
+        }
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             FragmentManager fm = getFragmentManager();
@@ -65,24 +73,21 @@ public class WhereToGoActivity extends FragmentActivity implements OnMapReadyCal
             dFragment.show(fm, "Dialog Fragment");                   //For adding dialogueFragment
         }
 
+        final Button btn_nav_bar = findViewById(R.id.btn_nav_bar);
+        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        btn_nav_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawer.openDrawer(GravityCompat.START);
+                statusbar.setVisibility(View.GONE);
+            }
+        });
+        //NavDrawerImplementation
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            statusbar.setVisibility(View.GONE);
+        }
 
-////        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
-////                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
-//
-//        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
-//            @Override
-//            public void onPlaceSelected(Place place) {
-//                // TODO: Get info about the selected place.
-//                Log.i(TAG, "Place: " + place.getName());
-//            }
-//
-//            @Override
-//            public void onError(Status status) {
-//                // TODO: Handle the error.
-//                Log.i(TAG, "An error occurred: " + status);
-//            }
-//        });
-//
+
     }
 
     @Override

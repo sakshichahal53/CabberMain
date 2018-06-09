@@ -8,15 +8,53 @@
     android:fitsSystemWindows="true"
     android:id="@+id/drawer_layout">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <View
             android:id="@+id/status_bar_map"
             android:layout_width="match_parent"
             android:layout_height="25dp" />
+
+    </FrameLayout>
+
+
+    <android.support.design.widget.NavigationView
+        android:theme="@style/NavigationTheme"
+        app:headerLayout="@layout/nav_drawer_header"
+        android:id="@+id/design_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:itemIconTint="@color/colorAccent"
+        app:menu="@menu/nav_menu"
+        android:layout_gravity="start">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:clickable="false"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/logout"
+                android:text="OpusLabs  "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:textSize="11sp"
+                android:gravity="end"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+    </android.support.design.widget.NavigationView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,6 +66,7 @@
             tools:context="com.example.sakshi.cabber.WhereToGoActivity" />
 
 
+
         <LinearLayout
             android:layout_marginTop="100dp"
             android:layout_width="302dp"
@@ -36,15 +75,6 @@
             android:weightSum="7"
             android:layout_centerHorizontal="true"
             android:background="#ffffff">
-
-            <!--
-                    <fragment
-                        android:id="@+id/place_autocomplete_fragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-                        />
-            -->
 
             <View
                 android:layout_marginLeft="20dp"
@@ -76,14 +106,15 @@
         </LinearLayout>
 
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btn_nav_bar"
+            android:layout_marginTop="41dp"
+            android:layout_marginLeft="21dp"
+            android:background="@drawable/ic_menu_black_24dp"
+            android:layout_width="20dp"
+            android:layout_height="18dp" />
 
-    <android.support.design.widget.NavigationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:menu="@menu/nav_menu"
-        android:layout_gravity="start">
+    </RelativeLayout>
 
-    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

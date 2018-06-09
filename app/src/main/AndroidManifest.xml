@@ -36,7 +36,13 @@
 
         <activity android:name=".SignupCodeActivity" />
         <activity android:name=".SignupCardActivity" />
-        <activity android:name=".WhereToGoActivity" />
+        <activity android:name=".WhereToGoActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         <activity android:name=".SplashScreen" />
         <activity android:name=".FareAndRateActivity" />
         <activity
@@ -48,11 +54,7 @@
 
         </activity>
         <activity android:name=".RippleEffectActivity">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
 
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
     </application>
 

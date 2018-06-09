@@ -2,20 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/home"
-        android:title="Home" />
+        android:title="Home"
+        android:icon="@drawable/ic_navigation_black_24dp" />
     <item
         android:id="@+id/trips"
-        android:title="My Trips" />
+        android:title="My Trips"
+        android:icon="@drawable/ic_directions_car_black_24dp" />
     <item
         android:id="@+id/payment"
-        android:title="Payment" />
+        android:title="Payment"
+        android:icon="@drawable/ic_credit_card_black_24dp" />
     <item
         android:id="@+id/help"
-        android:title="Help" />
+        android:title="Help"
+        android:icon="@drawable/ic_error_black_24dp" />
     <item
         android:id="@+id/refer"
-        android:title="Refer &amp; Earn" />
+        android:title="Refer &amp; Earn"
+        android:icon="@drawable/ic_share_black_24dp" />
     <item
         android:id="@+id/logout"
-        android:title="Logout" />
+        android:title="Logout"
+        android:icon="@drawable/ic_power_settings_new_black_24dp" />
 </menu>
