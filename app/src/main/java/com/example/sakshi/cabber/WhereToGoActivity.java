@@ -28,8 +28,10 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,11 +54,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener {
 
@@ -68,14 +72,19 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
     private static final LatLngBounds BOUNDS_INDIA =
             new LatLngBounds(new LatLng(23.63936, 68.14712), new LatLng(28.20453, 97.34466));
 
+    private ImageButton btn_show_snippet;
+    private Boolean is_snippet_on = true;
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle action_bar_drawer_toggle;
 
     private GoogleMap google_map;
+    private Marker m_marker;
     private View statusbar;
     private static final String TAG = "WhereToGoActivity";
     private LinearLayout layout_from_location;
+
+    private RelativeLayout from_location_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,6 +191,27 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             }
         });
 
+
+        from_location_layout = findViewById(R.id.from_location_marker_layout);
+        View vi = getLayoutInflater().inflate(R.layout.from_location_marker, null);
+
+        final TextView tv_snippet = vi.findViewById(R.id.tv_snippet);
+        btn_show_snippet = vi.findViewById(R.id.btn_show_snippet);
+        btn_show_snippet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (is_snippet_on) {
+                    tv_snippet.setVisibility(View.VISIBLE);
+                    is_snippet_on = false;
+                } else {
+                    tv_snippet.setVisibility(View.GONE);
+                    is_snippet_on = true;
+                }
+
+            }
+        });
+
     }
 
 
@@ -204,7 +234,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             Log.d(TAG, "geoLocate: found a location: " + address.toString());
             //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
 
-            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), 15.0f,
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), 10.0f,
                     address.getAddressLine(0));
         }
     }
@@ -212,6 +242,8 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
     private void moveCamera(LatLng latLng, float zoom, String title) {
         Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude);
         google_map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+        //    google_map.setInfoWindowAdapter(new CustomWindowInfoAdapter(WhereToGoActivity.this));
 
         if (!title.equals("My Location")) {
             MarkerOptions options = new MarkerOptions()
@@ -221,6 +253,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         }
 
         hideSoftKeyboard();
+
     }
 
     @Override
@@ -253,11 +286,44 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         } else
             googleMap.setMyLocationEnabled(true);
 
-        googleMap.setMinZoomPreference(15.0f);
+        googleMap.setMinZoomPreference(10.0f);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(28.700939, 77.272102), 4));
 
 
     }
+
+
+    private void moveCamera(LatLng latLng, float zoom, PlaceInfo placeInfo) {
+        Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude);
+        google_map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+        google_map.clear();
+
+        google_map.setInfoWindowAdapter(new CustomWindowInfoAdapter(WhereToGoActivity.this));
+
+        if (placeInfo != null) {
+            try {
+                String snippet = "Address: " + placeInfo.getAddress() + "\n" +
+                        "Phone Number: " + placeInfo.getPhoneNumber() + "\n" +
+                        "Website: " + placeInfo.getWebsiteUri() + "\n" +
+                        "Price Rating: " + placeInfo.getRating() + "\n";
+
+                MarkerOptions options = new MarkerOptions()
+                        .position(latLng)
+                        .title(placeInfo.getName())
+                        .snippet(snippet);
+                m_marker = google_map.addMarker(options);
+
+            } catch (NullPointerException e) {
+                Log.e(TAG, "moveCamera: NullPointerException: " + e.getMessage());
+            }
+        } else {
+            google_map.addMarker(new MarkerOptions().position(latLng));
+        }
+
+        hideSoftKeyboard();
+    }
+
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -320,8 +386,9 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
                 Log.e(TAG, "onResult: NullPointerException: " + e.getMessage());
             }
 
+
             moveCamera(new LatLng(place.getViewport().getCenter().latitude,
-                    place.getViewport().getCenter().longitude), 15.0f, m_place.getName());
+                    place.getViewport().getCenter().longitude), 10.0f, m_place);
 
 
             places.release();
