@@ -2,6 +2,7 @@ package com.example.sakshi.cabber;
 
 import android.Manifest;
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -9,9 +10,11 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -26,12 +30,10 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -47,23 +49,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
-
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener {
+
 
 
     public class AutoCompleteTextViewClickListener implements AdapterView.OnItemClickListener {
@@ -94,6 +82,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             new LatLngBounds(new LatLng(23.63936, 68.14712), new LatLng(28.20453, 97.34466));
 
 
+    private NavigationView navigation_view;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle action_bar_drawer_toggle;
 
@@ -132,13 +121,56 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         btn_nav_bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e(TAG, "Nav bar button clicked");
                 drawer.openDrawer(GravityCompat.START);
                 statusbar.setVisibility(View.GONE);
             }
-        });                                                                    //NavDrawerImplementation
+        });
+
+        //NavDrawerImplementation
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            statusbar.setVisibility(View.GONE);
+            statusbar.setVisibility(View.INVISIBLE);
         }
+
+        navigation_view = findViewById(R.id.navigation_view);
+        Log.e(TAG, "navigation view found ...id= " + navigation_view.getId());
+        navigation_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                Log.e(TAG, "Inside click lisnetet" + id);
+                switch (id) {
+
+                    case R.id.home_:
+                        startActivity(new Intent(WhereToGoActivity.this, ProfileActivity.class));
+                        break;
+
+                    case R.id.trips:
+                        startActivity(new Intent(WhereToGoActivity.this, MyTripsActivity.class));
+                        break;
+
+                    case R.id.payment:
+                        startActivity(new Intent(WhereToGoActivity.this, PaymentsActivity.class));
+                        break;
+
+                    case R.id.help:
+                        startActivity(new Intent(WhereToGoActivity.this, HelpActivity.class));
+                        break;
+
+                    case R.id.refer:
+                        startActivity(new Intent(WhereToGoActivity.this, ReferNowActivity.class));
+                        break;
+                    case R.id.logout:
+                        startActivity(new Intent(WhereToGoActivity.this, LoginActivity.class));
+                        break;
+
+                }
+
+                return true;
+            }
+
+        });
 
         google_api_client = new GoogleApiClient
                 .Builder(this)
@@ -162,6 +194,8 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         tv_from_auto_complete.setOnItemClickListener(new AutoCompleteTextViewClickListener(tv_from_auto_complete, mAutocompleteClickListener));
 
         setmarker = new SetMarkers(this);
+
+
     }
 
     @Override
@@ -190,7 +224,6 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
 
 
     }
-
 
 
     @Override
@@ -225,6 +258,8 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
                 place_result_destination.setResultCallback(destination_callback);
 
             }
+
+
         }
     };
 

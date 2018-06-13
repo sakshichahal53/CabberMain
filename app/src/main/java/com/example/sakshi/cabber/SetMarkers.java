@@ -1,8 +1,16 @@
 package com.example.sakshi.cabber;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -32,10 +40,11 @@ public class SetMarkers {
     private MapDirectionsHelper directions_helper;
 
     private PolylineOptions lineOptions = null;
-    private Polyline poly_line_var;
+    public Polyline poly_line_var;
 
 
     public SetMarkers(Context context) {
+
         this.context = context;
         directions_helper = new MapDirectionsHelper(context);
         markerpoints = new ArrayList();
@@ -85,6 +94,12 @@ public class SetMarkers {
         google_map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
         google_map.setInfoWindowAdapter(new CustomWindowInfoAdapter(context));
 
+    }
+
+    public boolean is_source_destination_chosen() {
+        if (s_marker != null && d_marker != null)
+            return true;
+        else return false;
     }
 
     /*** Code for finding the route
@@ -188,6 +203,14 @@ public class SetMarkers {
 
             poly_line_var = google_map_this.addPolyline(lineOptions);
 
+
+            if (is_source_destination_chosen() && poly_line_var != null) {
+//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                ft.replace(R.id.choose_cab_fragment, new ChooseCabFragment());
+//                ft.commit();
+                Intent myIntent = new Intent(context, RippleEffectActivity.class);
+                context.startActivity(myIntent);
+            }
         }
     }
 

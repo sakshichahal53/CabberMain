@@ -6,20 +6,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class FareAndRateActivity extends AppCompatActivity {
+public class ScheduleRideActivity extends AppCompatActivity {
 
-    Button btn_submit_rating;
+    Button btn_continue_ride;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fare_and_rate);
+        setContentView(R.layout.fragment_schedule_ride);
 
-        btn_submit_rating = findViewById(R.id.btn_submit_rating);
-        btn_submit_rating.setOnClickListener(new View.OnClickListener() {
+
+        btn_continue_ride = findViewById(R.id.btn_continue_ride);
+        btn_continue_ride.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FareAndRateActivity.this, PaymentsActivity.class));
+                startActivity(new Intent(ScheduleRideActivity.this, FareAndRateActivity.class));
             }
         });
+
+
     }
 }

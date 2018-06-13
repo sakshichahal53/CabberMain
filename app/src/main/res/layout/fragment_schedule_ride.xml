@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="320dp"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:layout_marginTop="21dp"
+                android:textSize="11sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Schedule Pick up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_marginTop="29dp"
+                android:textSize="11sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Select Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="September 17, Sunday"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_marginTop="22dp"
+                android:textSize="11sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Select Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="5:00 pm"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="220dp"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_height="40dp">
+
+            <Button
+                android:layout_marginLeft="15dp"
+                android:textSize="11sp"
+                android:text="CANCEl"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/colorAccent"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/input_merged_edittext"
+                android:layout_width="133dp"
+                android:layout_height="40dp" />
+
+            <Button
+                android:id="@+id/btn_continue_ride"
+                android:layout_marginLeft="15dp"
+                android:textSize="11sp"
+                android:text="CONFIRM"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorAccent"
+                android:background="@drawable/input_merged_edittext"
+                android:layout_width="133dp"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

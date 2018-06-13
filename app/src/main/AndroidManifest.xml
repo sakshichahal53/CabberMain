@@ -17,15 +17,16 @@
         android:required="true" />
 
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name="android.support.multidex.MultiDexApplication">
+        android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
+
         <activity android:name=".ChooseCabActivity" />
 
         <meta-data
@@ -38,25 +39,26 @@
         <activity android:name=".SignupCodeActivity" />
         <activity android:name=".SignupCardActivity" />
         <activity android:name=".WhereToGoActivity">
+
+        </activity>
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
-
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".SplashScreen" />
         <activity android:name=".FareAndRateActivity" />
         <activity
             android:name=".ProfileActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".HelpActivity" />
-        <activity android:name=".ReferNowActivity"></activity>
-        <activity android:name=".PaymentsActivity">
-
-        </activity>
-        <activity android:name=".RippleEffectActivity">
-
-        </activity>
+        <activity android:name=".ReferNowActivity" />
+        <activity android:name=".PaymentsActivity" />
+        <activity android:name=".RippleEffectActivity" />
+        <activity android:name=".MyTripsActivity" />
+        <activity android:name=".CompleteRideInfoActivity" />
+        <activity android:name=".ScheduleRideActivity"></activity>
     </application>
 
 </manifest>
