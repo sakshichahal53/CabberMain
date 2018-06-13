@@ -8,16 +8,18 @@
     android:background="@drawable/input_merged_edittext"
     android:id="@+id/from_location_marker_layout">
 
-    <RelativeLayout
-        android:layout_width="95dp"
-        android:layout_height="30dp">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <View
             android:layout_width="9dp"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:background="#fbbd00" />
 
         <TextView
+            android:layout_gravity="center"
             android:id="@+id/tv_from_marker"
             android:layout_centerHorizontal="true"
             android:textColor="@color/black"
@@ -25,18 +27,21 @@
             android:textSize="11sp"
             android:fontFamily="@font/montserrat_regular"
             android:text="Newark"
+            android:layout_marginLeft="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <ImageButton
+            android:layout_gravity="end"
             android:id="@+id/btn_show_snippet"
             android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="75dp"
+            android:background="@color/white"
             android:layout_centerVertical="true" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <TextView
         android:visibility="gone"
