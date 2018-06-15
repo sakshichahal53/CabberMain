@@ -24,10 +24,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignupActivity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.SignupActivity" />
 
-        <activity android:name=".ChooseCabActivity" />
+        <activity android:name=".activities.ChooseCabActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -36,29 +36,29 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDUX0mKbLAHawb5ZDidL1n9wEVSg8rKqVs" />
 
-        <activity android:name=".SignupCodeActivity" />
-        <activity android:name=".SignupCardActivity" />
-        <activity android:name=".WhereToGoActivity">
+        <activity android:name=".activities.SignupCodeActivity" />
+        <activity android:name=".activities.SignupCardActivity" />
+        <activity android:name=".activities.WhereToGoActivity">
 
         </activity>
-        <activity android:name=".SplashScreen">
+        <activity android:name=".others.SplashScreen">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
 
         </activity>
-        <activity android:name=".FareAndRateActivity" />
+        <activity android:name=".activities.FareAndRateActivity" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activities.ProfileActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".HelpActivity" />
-        <activity android:name=".ReferNowActivity" />
-        <activity android:name=".PaymentsActivity" />
-        <activity android:name=".RippleEffectActivity" />
-        <activity android:name=".MyTripsActivity" />
-        <activity android:name=".CompleteRideInfoActivity" />
-        <activity android:name=".ScheduleRideActivity"></activity>
+        <activity android:name=".activities.HelpActivity" />
+        <activity android:name=".activities.ReferNowActivity" />
+        <activity android:name=".activities.PaymentsActivity" />
+        <activity android:name=".activities.RippleEffectActivity" />
+        <activity android:name=".activities.MyTripsActivity" />
+        <activity android:name=".activities.CompleteRideInfoActivity" />
+        <activity android:name=".activities.ScheduleRideActivity"></activity>
     </application>
 
 </manifest>

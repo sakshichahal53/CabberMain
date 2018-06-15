@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:backgroundTint="@color/white"
-    tools:context=".WhereToGoActivity"
+    tools:context=".activities.WhereToGoActivity"
     android:background="@drawable/input_merged_edittext"
     android:id="@+id/from_location_marker_layout">
 

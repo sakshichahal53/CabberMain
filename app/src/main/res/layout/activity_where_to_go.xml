@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sakshi.cabber.WhereToGoActivity"
+    tools:context="com.example.sakshi.cabber.activities.WhereToGoActivity"
     android:fitsSystemWindows="true"
     android:id="@+id/drawer_layout">
 
@@ -32,7 +32,7 @@
             class="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.example.sakshi.cabber.WhereToGoActivity" />
+            tools:context="com.example.sakshi.cabber.activities.WhereToGoActivity" />
 
 
         <LinearLayout
@@ -129,7 +129,7 @@
         <fragment
             android:layout_marginTop="400dp"
             android:id="@+id/choose_cab_fragment"
-            android:name="com.example.sakshi.cabber.ChooseCabFragment"
+            android:name="com.example.sakshi.cabber.fragments.ChooseCabFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
