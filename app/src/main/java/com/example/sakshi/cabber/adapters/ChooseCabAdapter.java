@@ -43,10 +43,14 @@ public class ChooseCabAdapter extends RecyclerView.Adapter<ChooseCabAdapter.MyVi
         holder.car_name.setText(cab.getName());
         String net_price = cab.getLower_value().concat("-").concat(cab.getUppervalue());
 
+
         holder.price.setText(net_price);
         Glide.with(context).load(cab.getImage())
                 .thumbnail(0.5f)
                 .into(holder.image_car);
+
+        if (position == 1) holder.tv_cabtime.setVisibility(View.VISIBLE);
+
     }
 
     @Override
@@ -57,6 +61,7 @@ public class ChooseCabAdapter extends RecyclerView.Adapter<ChooseCabAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView car_name, price;
         public ImageView image_car;
+        public TextView tv_cabtime;
 
         public MyViewHolder(View view) {
             super(view);
@@ -64,6 +69,9 @@ public class ChooseCabAdapter extends RecyclerView.Adapter<ChooseCabAdapter.MyVi
             car_name = view.findViewById(R.id.car_name);
             image_car = view.findViewById(R.id.car_image);
             price = view.findViewById(R.id.car_price);
+            tv_cabtime = view.findViewById(R.id.tv_time_to_cab);
+
+
 
         }
     }

@@ -61,7 +61,13 @@
                 android:textSize="11sp"
                 android:textAlignment="viewStart"
                 android:layout_marginLeft="12dp"
-                android:fontFamily="@font/montserrat_regular" />
+                android:fontFamily="@font/montserrat_regular"
+                android:singleLine="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:paddingLeft="15dip"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
 
             <ImageView
                 android:layout_weight="1"
@@ -90,6 +96,7 @@
                 android:background="@drawable/where_togo_dot"
                 android:layout_gravity="center" />
 
+
             <AutoCompleteTextView
                 android:id="@+id/to_tv_autocomplete"
                 android:layout_weight="4"
@@ -100,7 +107,15 @@
                 android:textColor="#393939"
                 android:textSize="11sp"
                 android:textAlignment="viewStart"
-                android:fontFamily="@font/montserrat_regular" />
+                android:fontFamily="@font/montserrat_regular"
+                android:singleLine="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:freezesText="true" />
 
 
         </LinearLayout>
@@ -116,33 +131,27 @@
 
     </RelativeLayout>
 
+
     <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
-
-        <fragment
-            android:layout_marginTop="400dp"
-            android:id="@+id/choose_cab_fragment"
-            android:name="com.example.sakshi.cabber.fragments.ChooseCabFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+        android:id="@+id/map_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     </FrameLayout>
 
+    <!---
+        <FrameLayout
+            android:id="@+id/schedule_ride_fragment"
+            android:name="com.example.sakshi.cabber.fragments.ScheduleRideFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <FrameLayout
-        android:id="@+id/schedule_ride_fragment"
-        android:name="com.example.sakshi.cabber.fragments.ScheduleRideFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-
-    <FrameLayout
-        android:name="com.example.sakshi.cabber.fragments.RippleEffectFragment"
-        android:id="@+id/ripple_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <FrameLayout
+            android:name="com.example.sakshi.cabber.fragments.RippleEffectFragment"
+            android:id="@+id/ripple_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    -->
 
     <android.support.design.widget.NavigationView
         android:theme="@style/NavigationTheme"

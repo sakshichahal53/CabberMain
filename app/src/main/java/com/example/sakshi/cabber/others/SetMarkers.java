@@ -1,13 +1,22 @@
-package com.example.sakshi.cabber.helpers;
+package com.example.sakshi.cabber.others;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.sakshi.cabber.R;
 import com.example.sakshi.cabber.adapters.CustomWindowInfoAdapter;
+import com.example.sakshi.cabber.fragments.ChooseCabFragment;
 import com.example.sakshi.cabber.fragments.RippleEffectFragment;
+import com.example.sakshi.cabber.fragments.ScheduleRideFragment;
+import com.example.sakshi.cabber.helpers.DirectionsJSONParser;
+import com.example.sakshi.cabber.helpers.MapDirectionsHelper;
+import com.example.sakshi.cabber.helpers.PlaceInfo;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -201,17 +210,17 @@ public class SetMarkers {
 
 
             if (is_source_destination_chosen() && poly_line_var != null) {
-//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                ft.replace(R.id.choose_cab_fragment, new ChooseCabFragment());
-//                ft.commit();
 
-//                context.getActivity().getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.Layout_container, nextFrag,"findThisFragment")
-//                        .addToBackStack(null)
-//                        .commit();
-//
-                Intent myIntent = new Intent(context, RippleEffectFragment.class);
-                context.startActivity(myIntent);
+                final Activity activity = (Activity) context;
+
+                InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+
+                FragmentManager fm = activity.getFragmentManager();
+                android.app.FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.map_fragment, new ChooseCabFragment(), "Choose Cab");
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
 
 
             }

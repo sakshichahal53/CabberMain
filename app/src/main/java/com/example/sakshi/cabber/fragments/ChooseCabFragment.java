@@ -11,19 +11,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.sakshi.cabber.R;
 import com.example.sakshi.cabber.adapters.ChooseCabAdapter;
 import com.example.sakshi.cabber.models.ModelCar;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChooseCabFragment extends Fragment {
+public class ChooseCabFragment extends android.app.Fragment {
 
     private RecyclerView recycler_view;
     private List<ModelCar> cab_list = new ArrayList<>();
     private ChooseCabAdapter adapter;
+
+    Button btn_choose_cab;
 
     public ChooseCabFragment() {
         // Required empty public constructor
@@ -51,6 +57,19 @@ public class ChooseCabFragment extends Fragment {
         prepare_cab_data();
         Log.e("Fragment", "prepare cab data initialized  " + cab_list.size());
 
+        btn_choose_cab = view.findViewById(R.id.btn_choosecab);
+        btn_choose_cab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.FragmentManager fragmentManager = getFragmentManager();
+                android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.map_fragment, new ScheduleRideFragment(), "Ride Info");
+
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+            }
+        });
     }
 
     public void prepare_cab_data() {

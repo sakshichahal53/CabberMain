@@ -19,8 +19,6 @@ import com.example.sakshi.cabber.R;
 
 public class ScheduleRideFragment extends Fragment {
 
-    CardView schedule_ride_card;
-    FrameLayout ripple_frame_layout;
     Button btn_continue_ride;
 
     public ScheduleRideFragment() {
@@ -32,7 +30,7 @@ public class ScheduleRideFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_schedule_ride, container, false);
-        schedule_ride_card = view.findViewById(R.id.card_view_schedule_ride);
+        //  schedule_ride_card = view.findViewById(R.id.card_view_schedule_ride);
         return view;
     }
 
@@ -45,8 +43,8 @@ public class ScheduleRideFragment extends Fragment {
             public void onClick(View view) {
                 android.app.FragmentManager fragmentManager = getFragmentManager();
                 android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.ripple_fragment, new RippleEffectFragment(), "Ride Info");
-                schedule_ride_card.setVisibility(View.GONE);
+                fragmentTransaction.replace(R.id.map_fragment, new RippleEffectFragment(), "Ride Info");
+                //  schedule_ride_card.setVisibility(View.GONE);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 

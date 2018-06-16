@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -30,7 +29,7 @@ import com.example.sakshi.cabber.fragments.DialogFragmentReferral;
 import com.example.sakshi.cabber.adapters.PlaceAutocompleteAdapter;
 import com.example.sakshi.cabber.helpers.PlaceInfo;
 import com.example.sakshi.cabber.R;
-import com.example.sakshi.cabber.helpers.SetMarkers;
+import com.example.sakshi.cabber.others.SetMarkers;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -65,7 +64,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             case R.id.trips:
                 FragmentManager fragmentManager = getFragmentManager();
                 android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.schedule_ride_fragment, new ScheduleRideFragment(), "Ride Info");
+                fragmentTransaction.replace(R.id.map_fragment, new ScheduleRideFragment(), "Ride Info");
                 drawerLayout.closeDrawers();
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
