@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/card_view_schedule_ride"
         android:layout_marginTop="320dp"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
@@ -97,5 +98,6 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
 
 </RelativeLayout>

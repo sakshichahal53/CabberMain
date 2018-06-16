@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,14 +21,16 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.sakshi.cabber.fragments.ScheduleRideFragment;
 import com.example.sakshi.cabber.helpers.CustomStatusBar;
 import com.example.sakshi.cabber.fragments.DialogFragmentReferral;
 import com.example.sakshi.cabber.adapters.PlaceAutocompleteAdapter;
 import com.example.sakshi.cabber.helpers.PlaceInfo;
 import com.example.sakshi.cabber.R;
-import com.example.sakshi.cabber.others.SetMarkers;
+import com.example.sakshi.cabber.helpers.SetMarkers;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -44,8 +47,48 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 
-public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener {
+public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener,
+        NavigationView.OnNavigationItemSelectedListener {
 
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        Log.e(TAG, "Inside click lisnetet" + id);
+        switch (id) {
+
+            case R.id.home_:
+                startActivity(new Intent(WhereToGoActivity.this, ProfileActivity.class));
+                break;
+
+            case R.id.trips:
+                FragmentManager fragmentManager = getFragmentManager();
+                android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.schedule_ride_fragment, new ScheduleRideFragment(), "Ride Info");
+                drawerLayout.closeDrawers();
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                break;
+
+
+            case R.id.payment:
+                startActivity(new Intent(WhereToGoActivity.this, PaymentsActivity.class));
+                break;
+
+            case R.id.help:
+                startActivity(new Intent(WhereToGoActivity.this, HelpActivity.class));
+                break;
+
+            case R.id.refer:
+                startActivity(new Intent(WhereToGoActivity.this, ReferNowActivity.class));
+                break;
+            case R.id.logout:
+                startActivity(new Intent(WhereToGoActivity.this, LoginActivity.class));
+                break;
+        }
+        return true;
+    }
 
     public class AutoCompleteTextViewClickListener implements AdapterView.OnItemClickListener {
 
@@ -83,7 +126,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
     private View statusbar;
     private static final String TAG = "WhereToGoActivity";
     private SetMarkers setmarker;
-
+    private FrameLayout schedule_ride_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +147,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         action_bar_drawer_toggle.syncState();
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);            //Removing statusbar from Activity
+        // schedule_ride_layout=findViewById(R.id.frame_layout_schedule);
 
         FragmentManager fm = getFragmentManager();
         DialogFragmentReferral dFragment = new DialogFragmentReferral();
@@ -120,6 +164,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             }
         });
 
+
         //NavDrawerImplementation
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             statusbar.setVisibility(View.INVISIBLE);
@@ -127,43 +172,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
 
         navigation_view = findViewById(R.id.navigation_view);
         Log.e(TAG, "navigation view found ...id= " + navigation_view.getId());
-        navigation_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-
-                Log.e(TAG, "Inside click lisnetet" + id);
-                switch (id) {
-
-                    case R.id.home_:
-                        startActivity(new Intent(WhereToGoActivity.this, ProfileActivity.class));
-                        break;
-
-                    case R.id.trips:
-                        startActivity(new Intent(WhereToGoActivity.this, MyTripsActivity.class));
-                        break;
-
-                    case R.id.payment:
-                        startActivity(new Intent(WhereToGoActivity.this, PaymentsActivity.class));
-                        break;
-
-                    case R.id.help:
-                        startActivity(new Intent(WhereToGoActivity.this, HelpActivity.class));
-                        break;
-
-                    case R.id.refer:
-                        startActivity(new Intent(WhereToGoActivity.this, ReferNowActivity.class));
-                        break;
-                    case R.id.logout:
-                        startActivity(new Intent(WhereToGoActivity.this, LoginActivity.class));
-                        break;
-
-                }
-
-                return true;
-            }
-
-        });
+        navigation_view.setNavigationItemSelectedListener(this);
 
         google_api_client = new GoogleApiClient
                 .Builder(this)
@@ -187,7 +196,6 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         tv_from_auto_complete.setOnItemClickListener(new AutoCompleteTextViewClickListener(tv_from_auto_complete, mAutocompleteClickListener));
 
         setmarker = new SetMarkers(this);
-
 
     }
 
@@ -321,3 +329,13 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
     };
 
 }
+
+
+//
+//    FragmentManager fragmentManager = getFragmentManager ();
+//    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();
+//fragmentTransaction.replace(R.id.ride_info_fragment,new CheckLayout(),"Ride Info");
+//        fragmentTransaction.addToBackStack(null);
+//        drawerLayout.closeDrawers();
+//        schedule_ride_layout.setVisibility(View.VISIBLE);
+//        fragmentTransaction.commit();

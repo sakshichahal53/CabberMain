@@ -26,7 +26,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SignupActivity" />
-
         <activity android:name=".activities.ChooseCabActivity" />
 
         <meta-data
@@ -39,15 +38,13 @@
         <activity android:name=".activities.SignupCodeActivity" />
         <activity android:name=".activities.SignupCardActivity" />
         <activity android:name=".activities.WhereToGoActivity">
-
-        </activity>
-        <activity android:name=".others.SplashScreen">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
 
         </activity>
+        <activity android:name=".others.SplashScreen"></activity>
         <activity android:name=".activities.FareAndRateActivity" />
         <activity
             android:name=".activities.ProfileActivity"
@@ -55,10 +52,10 @@
         <activity android:name=".activities.HelpActivity" />
         <activity android:name=".activities.ReferNowActivity" />
         <activity android:name=".activities.PaymentsActivity" />
-        <activity android:name=".activities.RippleEffectActivity" />
         <activity android:name=".activities.MyTripsActivity" />
         <activity android:name=".activities.CompleteRideInfoActivity" />
-        <activity android:name=".activities.ScheduleRideActivity"></activity>
+        <activity android:name=".activities.ScheduleRideActivity" />
+
     </application>
 
 </manifest>

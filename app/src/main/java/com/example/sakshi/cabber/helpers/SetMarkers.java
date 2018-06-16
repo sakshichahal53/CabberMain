@@ -1,4 +1,4 @@
-package com.example.sakshi.cabber.others;
+package com.example.sakshi.cabber.helpers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,11 +6,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.sakshi.cabber.R;
-import com.example.sakshi.cabber.activities.RippleEffectActivity;
 import com.example.sakshi.cabber.adapters.CustomWindowInfoAdapter;
-import com.example.sakshi.cabber.helpers.DirectionsJSONParser;
-import com.example.sakshi.cabber.helpers.MapDirectionsHelper;
-import com.example.sakshi.cabber.helpers.PlaceInfo;
+import com.example.sakshi.cabber.fragments.RippleEffectFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -207,8 +204,16 @@ public class SetMarkers {
 //                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 //                ft.replace(R.id.choose_cab_fragment, new ChooseCabFragment());
 //                ft.commit();
-                Intent myIntent = new Intent(context, RippleEffectActivity.class);
+
+//                context.getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.Layout_container, nextFrag,"findThisFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+//
+                Intent myIntent = new Intent(context, RippleEffectFragment.class);
                 context.startActivity(myIntent);
+
+
             }
         }
     }
