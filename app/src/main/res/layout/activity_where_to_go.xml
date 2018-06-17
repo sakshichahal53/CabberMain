@@ -138,21 +138,6 @@
         android:layout_height="match_parent">
     </FrameLayout>
 
-    <!---
-        <FrameLayout
-            android:id="@+id/schedule_ride_fragment"
-            android:name="com.example.sakshi.cabber.fragments.ScheduleRideFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-
-        <FrameLayout
-            android:name="com.example.sakshi.cabber.fragments.RippleEffectFragment"
-            android:id="@+id/ripple_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    -->
-
     <android.support.design.widget.NavigationView
         android:theme="@style/NavigationTheme"
         app:headerLayout="@layout/nav_drawer_header"

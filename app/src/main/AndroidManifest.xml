@@ -53,7 +53,6 @@
         <activity android:name=".activities.PaymentsActivity" />
         <activity android:name=".activities.MyTripsActivity" />
         <activity android:name=".activities.CompleteRideInfoActivity" />
-        <activity android:name=".activities.ScheduleRideActivity" />
 
     </application>
 

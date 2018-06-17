@@ -62,12 +62,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
                 break;
 
             case R.id.trips:
-                FragmentManager fragmentManager = getFragmentManager();
-                android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.map_fragment, new ScheduleRideFragment(), "Ride Info");
-                drawerLayout.closeDrawers();
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                startActivity(new Intent(WhereToGoActivity.this, MyTripsActivity.class));
                 break;
 
 
@@ -327,14 +322,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         }
     };
 
+
 }
 
 
-//
-//    FragmentManager fragmentManager = getFragmentManager ();
-//    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();
-//fragmentTransaction.replace(R.id.ride_info_fragment,new CheckLayout(),"Ride Info");
-//        fragmentTransaction.addToBackStack(null);
-//        drawerLayout.closeDrawers();
-//        schedule_ride_layout.setVisibility(View.VISIBLE);
-//        fragmentTransaction.commit();

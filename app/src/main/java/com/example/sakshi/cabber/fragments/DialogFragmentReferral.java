@@ -19,9 +19,10 @@ public class DialogFragmentReferral extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.referral_code, container, false);
+        View rootView = inflater.inflate(R.layout.dialog_referral_code, container, false);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             getDialog().setTitle("DialogFragment Tutorial");
+            setCancelable(false);
         }
 
         return rootView;
