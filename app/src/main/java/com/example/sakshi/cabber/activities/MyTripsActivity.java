@@ -18,6 +18,8 @@ public class MyTripsActivity extends AppCompatActivity {
     private ViewPager view_pager;
     private MyTripsAdapter m_adapter;
 
+    private View past_view, upcoming_view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +40,16 @@ public class MyTripsActivity extends AppCompatActivity {
         view_pager.setOffscreenPageLimit(2);
 
 
+        past_view = findViewById(R.id.past_view);
+        upcoming_view = findViewById(R.id.upcoming_view);
+
+
+
         view_pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+                changelayout(position);
             }
 
             @Override
@@ -57,6 +65,16 @@ public class MyTripsActivity extends AppCompatActivity {
 
     }
 
+    public void changelayout(int position) {
+        if (position == 0) {
+            past_view.setVisibility(View.VISIBLE);
+            upcoming_view.setVisibility(View.GONE);
+        } else if (position == 1) {
+
+            upcoming_view.setVisibility(View.VISIBLE);
+            past_view.setVisibility(View.GONE);
+        }
+    }
     public void go_to_past(View view) {
         view_pager.setCurrentItem(0);
     }

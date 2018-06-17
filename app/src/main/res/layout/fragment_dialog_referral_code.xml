@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:backgroundTint="@color/white"
+    android:background="@drawable/radius_dialog_fragment">
 
     <LinearLayout
         android:layout_width="298dp"
@@ -24,26 +26,26 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Do you have any referral code?"
             android:textColor="@color/colorAccent"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="35dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="Add referral code and get your first cab ride free"
             android:textColor="#4d4d4d"
-            android:textSize="15sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/ed_referral_code"
             android:layout_width="232dp"
             android:layout_height="48dp"
             android:layout_below="@id/tv_enter_code"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="32dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="35dp"
             android:background="@drawable/input_merged_edittext"
             android:fontFamily="@font/montserrat_regular"
@@ -61,20 +63,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="33dp"
+                android:layout_marginLeft="30dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="I Don't have"
                 android:textColor="#525252"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/tv_continue_dialog"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="66dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Continue"
                 android:textColor="@color/colorAccent"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

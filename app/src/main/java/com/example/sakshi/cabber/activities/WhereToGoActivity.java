@@ -1,18 +1,27 @@
 package com.example.sakshi.cabber.activities;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +30,7 @@ import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sakshi.cabber.fragments.ScheduleRideFragment;
@@ -30,13 +40,19 @@ import com.example.sakshi.cabber.adapters.PlaceAutocompleteAdapter;
 import com.example.sakshi.cabber.helpers.PlaceInfo;
 import com.example.sakshi.cabber.R;
 import com.example.sakshi.cabber.others.SetMarkers;
+import com.example.sakshi.cabber.others.SplashScreen;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.PlaceDetectionClient;
+import com.google.android.gms.location.places.PlaceLikelihood;
+import com.google.android.gms.location.places.PlaceLikelihoodBufferResponse;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -45,6 +61,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener,
         NavigationView.OnNavigationItemSelectedListener {
@@ -120,7 +140,13 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
     private View statusbar;
     private static final String TAG = "WhereToGoActivity";
     private SetMarkers setmarker;
-    private FrameLayout schedule_ride_layout;
+    private Location my_location;
+
+    private FusedLocationProviderClient fused_client;
+    private ImageView img_my_location;
+
+    private LatLng source_latlng, destination_latlng, my_location_latlng;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,10 +217,51 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
 
         setmarker = new SetMarkers(this);
 
+
+        fused_client = LocationServices.getFusedLocationProviderClient(this);
+        img_my_location = findViewById(R.id.img_my_location);
+
+
+        img_my_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                tv_from_auto_complete.setText("My Location");
+                setmarker.moveCamera(new LatLng(my_location.getLatitude(), my_location.getLongitude()), google_map);
+                setmarker.set_marker(source_info, destination_info, my_location_latlng, -1, google_map);
+            }
+        });
+
+
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    protected void onStart() {
+        super.onStart();
+
+        if (!isLocationEnabled(WhereToGoActivity.this)) {
+            AlertDialog.Builder builder;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                builder = new AlertDialog.Builder(WhereToGoActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+            } else {
+                builder = new AlertDialog.Builder(WhereToGoActivity.this);
+            }
+            builder.setTitle("Lcoation Services Disabled")
+                    .setMessage("Please Turn Your GPS Location On!")
+                    .show();
+
+            if (ContextCompat.checkSelfPermission(WhereToGoActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(WhereToGoActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED)
+                Toast.makeText(this, "Please give app permissions in Settings for the app to work!", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    @Override
+    public void onMapReady(final GoogleMap googleMap) {
         google_map = googleMap;
 
         try {
@@ -207,16 +274,35 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             Log.e(TAG, "Can't find style. Error: ", e);
         }
 
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Turn your location on!", Toast.LENGTH_SHORT).show();
-            return;
-        } else
-            googleMap.setMyLocationEnabled(true);
 
+        } else {
+            google_map.setMyLocationEnabled(true);
+            google_map.getUiSettings().setMyLocationButtonEnabled(false);
+            fused_client.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    if (location != null) {
+                        Log.e(TAG, "My Location is " + String.valueOf(location.getLatitude()));
+                        my_location = location;
+                        my_location_latlng = new LatLng(my_location.getLatitude(), my_location.getLongitude());
 
-        googleMap.setMinZoomPreference(15.0f);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(28.700939, 77.272102), 5));
+                        google_map.setMinZoomPreference(10.0f);
+                        google_map.moveCamera(CameraUpdateFactory.newLatLngZoom(my_location_latlng, 5));
 
+                    }
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e(TAG, "Getting location failed");
+                    Toast.makeText(WhereToGoActivity.this, "Getting Location failed", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
 
     }
 
@@ -258,6 +344,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         }
     };
 
+
     private ResultCallback<PlaceBuffer> source_callback = new ResultCallback<PlaceBuffer>() {
         @Override
         public void onResult(@NonNull PlaceBuffer places) {
@@ -281,10 +368,8 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
 
             Log.e(TAG, "Source is " + source_place.toString());
 
-            setmarker.moveCamera(new LatLng(source_place.getViewport().getCenter().latitude,
-                    source_place.getViewport().getCenter().longitude), 15.0f, google_map);
-
-            setmarker.set_marker(source_info, destination_info, 0, google_map);
+            setmarker.moveCamera(new LatLng(source_place.getViewport().getCenter().latitude, source_place.getViewport().getCenter().longitude), google_map);
+            setmarker.set_marker(source_info, destination_info, my_location_latlng, 0, google_map);
             places.release();
         }
     };
@@ -314,15 +399,36 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             Log.e(TAG, "Destination is " + destination_place.toString());
 
             setmarker.moveCamera(new LatLng(destination_place.getViewport().getCenter().latitude,
-                    destination_place.getViewport().getCenter().longitude), 15.0f, google_map);
+                    destination_place.getViewport().getCenter().longitude), google_map);
 
-            setmarker.set_marker(source_info, destination_info, 1, google_map);
+            setmarker.set_marker(source_info, destination_info, my_location_latlng, 1, google_map);
 
             places.release();
         }
     };
 
+    public static boolean isLocationEnabled(Context context) {
+        int locationMode = 0;
+        String locationProviders;
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            try {
+                locationMode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
+
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+            return locationMode != Settings.Secure.LOCATION_MODE_OFF;
+
+        } else {
+            locationProviders = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+            return !TextUtils.isEmpty(locationProviders);
+        }
+
+
+    }
 }
 
 

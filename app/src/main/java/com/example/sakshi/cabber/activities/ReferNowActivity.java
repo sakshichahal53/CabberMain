@@ -3,6 +3,7 @@ package com.example.sakshi.cabber.activities;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -17,6 +18,7 @@ public class ReferNowActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refer_now);
+
 
         statusbar = findViewById(R.id.statusBarBackground_refernow);
         CustomStatusBar customStatusBar = new CustomStatusBar(ReferNowActivity.this, this);

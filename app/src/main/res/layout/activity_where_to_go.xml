@@ -65,16 +65,17 @@
                 android:singleLine="true"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:scrollHorizontally="true"
-                android:paddingLeft="15dip"
+                android:paddingRight="8dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true" />
 
             <ImageView
+                android:id="@+id/img_my_location"
                 android:layout_weight="1"
                 android:layout_width="40dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="80dp"
+                android:layout_marginRight="70dp"
                 android:src="@drawable/map_nav" />
         </LinearLayout>
 
@@ -89,9 +90,8 @@
             android:background="#ffffff">
 
             <View
-                android:layout_marginLeft="12dp"
-                android:layout_weight="1"
-                android:layout_width="40dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="20dp"
                 android:layout_height="11dp"
                 android:background="@drawable/where_togo_dot"
                 android:layout_gravity="center" />
@@ -99,7 +99,7 @@
 
             <AutoCompleteTextView
                 android:id="@+id/to_tv_autocomplete"
-                android:layout_weight="4"
+                android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="To"
@@ -111,8 +111,9 @@
                 android:singleLine="true"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:scrollHorizontally="true"
-                android:paddingLeft="15dip"
-                android:paddingRight="15dip"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginEnd="30dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:freezesText="true" />

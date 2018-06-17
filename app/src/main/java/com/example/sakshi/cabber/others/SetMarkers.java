@@ -17,9 +17,11 @@ import com.example.sakshi.cabber.fragments.ScheduleRideFragment;
 import com.example.sakshi.cabber.helpers.DirectionsJSONParser;
 import com.example.sakshi.cabber.helpers.MapDirectionsHelper;
 import com.example.sakshi.cabber.helpers.PlaceInfo;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -55,48 +57,53 @@ public class SetMarkers {
         markerpoints = new ArrayList();
     }
 
-    public void set_marker(PlaceInfo source_info, PlaceInfo destination_info, int set_place, GoogleMap google_map) {
+    public void set_marker(PlaceInfo source_info, PlaceInfo destination_info, LatLng my_location_latlng, int set_place, GoogleMap google_map) {
         google_map_this = google_map;
-        if (set_place == 0) {
+
+        if (set_place == -1) {
+            MarkerOptions source_options = new MarkerOptions()
+                    .position(my_location_latlng)                         //-1 for my location
+                    .title("Your location");
+
+
+            if (s_marker != null) s_marker.remove();
+
+            s_marker = google_map.addMarker(source_options);
+        } else if (set_place == 0) {
 
             MarkerOptions source_options = new MarkerOptions()
                     .position(source_info.getLatlng())
                     .title(source_info.getName());
 
-            if (s_marker != null) {
+            if (s_marker != null)
                 s_marker.remove();
-                markerpoints.set(0, source_info.getLatlng());
-            } else
-                markerpoints.add(source_info.getLatlng());
+
 
             s_marker = google_map.addMarker(source_options);
 
-        }
 
-        if (set_place == 1) {
+        } else if (set_place == 1) {
 
             MarkerOptions destination_options = new MarkerOptions()
                     .position(destination_info.getLatlng())
                     .title(destination_info.getName());
 
-            if (d_marker != null) {
+            if (d_marker != null)
                 d_marker.remove();
-                markerpoints.set(1, destination_info.getLatlng());
-            } else
-                markerpoints.add(destination_info.getLatlng());
+
 
             d_marker = google_map.addMarker(destination_options);
 
         }
 
-        if (markerpoints.size() == 2)
+        if (d_marker != null && s_marker != null)
             draw_route();
     }
 
 
-    public void moveCamera(LatLng latLng, float zoom, GoogleMap google_map) {
+    public void moveCamera(LatLng latLng, GoogleMap google_map) {
 
-        google_map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        google_map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
         google_map.setInfoWindowAdapter(new CustomWindowInfoAdapter(context));
 
     }
@@ -104,6 +111,7 @@ public class SetMarkers {
     public boolean is_source_destination_chosen() {
         if (s_marker != null && d_marker != null)
             return true;
+
         else return false;
     }
 
@@ -116,9 +124,20 @@ public class SetMarkers {
         if (poly_line_var != null)
             poly_line_var.remove();
 
-        LatLng origin = (LatLng) markerpoints.get(0);
-        LatLng dest = (LatLng) markerpoints.get(1);
+        LatLng origin = new LatLng(s_marker.getPosition().latitude, s_marker.getPosition().longitude);
+        LatLng dest = new LatLng(d_marker.getPosition().latitude, d_marker.getPosition().longitude);
 
+
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        builder.include(origin);
+        builder.include(dest);
+        LatLngBounds bounds = builder.build();
+
+        int padding = 2; // offset from edges of the map in pixels
+        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+        google_map_this.animateCamera(cu);
+
+        Log.e(TAG, "source:" + origin + " destination: " + dest);
         String url = directions_helper.getDirectionsUrl(origin, dest);
         DownloadTask downloadTask = new DownloadTask();
 
@@ -127,7 +146,6 @@ public class SetMarkers {
         downloadTask.execute(url);
 
     }
-
 
     private class DownloadTask extends AsyncTask<String, Void, String> {
 

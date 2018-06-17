@@ -65,7 +65,30 @@
             android:textColor="@color/white"
             android:background="@color/colorAccent"
             android:onClick="go_to_upcoming" />
+
     </LinearLayout>
+
+
+    <View
+        android:id="@+id/past_view"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:layout_width="103dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="35dp"
+        android:background="@color/white"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/upcoming_view"
+        android:layout_weight="1"
+        android:layout_width="103dp"
+        android:layout_height="4dp"
+        android:visibility="gone"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="205dp"
+        android:background="@color/white" />
 
 
     <android.support.v4.view.ViewPager
