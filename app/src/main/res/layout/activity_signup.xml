@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -32,27 +32,26 @@
         android:id="@+id/imageView4"
         android:layout_width="143dp"
         android:layout_height="143dp"
-        app:srcCompat="@drawable/logo"
-        android:layout_marginTop="42dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/toolbar"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        app:srcCompat="@drawable/logo" />
 
 
     <LinearLayout
         android:id="@+id/progress_dots"
         android:layout_width="match_parent"
         android:layout_height="6dp"
-        android:orientation="horizontal"
         android:layout_below="@+id/imageView4"
         android:layout_marginTop="24dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <View
             android:layout_width="6dp"
             android:layout_height="match_parent"
-            android:background="@drawable/active_dot"/>
-        
+            android:background="@drawable/active_dot" />
+
 
         <View
             android:layout_width="35dp"
@@ -60,50 +59,49 @@
             android:layout_gravity="center"
             android:layout_marginLeft="6dp"
             android:layout_marginRight="6dp"
-            android:background="@color/grey"/>
+            android:background="@color/grey" />
 
         <View
             android:layout_width="6dp"
-            android:layout_gravity="center"
             android:layout_height="match_parent"
-            android:background="@drawable/non_activedot"/>
+            android:layout_gravity="center"
+            android:background="@drawable/non_activedot" />
 
 
         <View
             android:layout_width="35dp"
             android:layout_height="0.3dp"
             android:layout_gravity="center"
-            android:background="@color/grey"
             android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"/>
+            android:layout_marginRight="6dp"
+            android:background="@color/grey" />
 
         <View
             android:layout_width="6dp"
             android:layout_height="match_parent"
-            android:background="@drawable/non_activedot"/>
+            android:background="@drawable/non_activedot" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:id="@+id/name_credentials"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/progress_dots"
-        android:layout_marginTop="30dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
 
 
         <RelativeLayout
-            android:layout_below="@id/progress_dots"
             android:layout_width="86dp"
             android:layout_height="80dp"
+            android:layout_below="@id/progress_dots"
             android:layout_marginRight="6dp">
 
             <View
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:background="@color/grey">
-            </View>
+                android:layout_height="match_parent"
+                android:background="@color/grey"></View>
 
             <ImageButton
                 android:id="@+id/imageButton"
@@ -112,14 +110,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:backgroundTint="@color/grey"
-                app:srcCompat="@drawable/ic_menu_camera" />
+                app:srcCompat="@android:drawable/ic_menu_camera" />
 
         </RelativeLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="210dp"
-            android:layout_height="80dp">
+            android:layout_height="80dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/linearLayout13"
@@ -139,30 +137,28 @@
                     android:fontFamily="@font/montserrat_regular"
                     android:paddingLeft="16dp"
                     android:paddingStart="16dp"
-                    android:paddingTop="14dp"
-                    android:layout_gravity="center_vertical"
+                    android:paddingTop="16dp"
                     android:text="@string/first_name"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
 
                 <EditText
                     android:id="@+id/editText14"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textDirection="rtl"
-                    android:paddingRight="8dp"
-                    android:textSize="11sp"
-                    android:textColor="#131313"
-                    android:fontFamily="@font/montserrat_regular"
                     android:background="@color/grey"
-                    android:inputType="text" />
+                    android:fontFamily="@font/montserrat_regular"
+                    android:inputType="text"
+                    android:paddingRight="8dp"
+                    android:textDirection="rtl"
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
-                android:background="#c7c7c7"
-                />
+                android:background="#c7c7c7" />
+
             <LinearLayout
                 android:id="@+id/linearLayout20"
                 android:layout_width="match_parent"
@@ -181,20 +177,18 @@
                     android:fontFamily="@font/montserrat_regular"
                     android:paddingLeft="16dp"
                     android:paddingStart="16dp"
-                    android:paddingTop="14dp"
+                    android:paddingTop="16dp"
                     android:text="Last Name"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
 
                 <EditText
                     android:id="@+id/editText15"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#131313"
                     android:background="@color/grey"
-                    android:inputType="text"
-                    android:textSize="11sp"
                     android:fontFamily="@font/montserrat_regular"
+                    android:inputType="text"
                     android:paddingRight="8dp"
                     android:textDirection="rtl" />
             </LinearLayout>
@@ -205,16 +199,14 @@
     </LinearLayout>
 
 
-
-
     <LinearLayout
         android:id="@+id/password_credentials"
-        android:layout_below="@+id/name_credentials"
-        android:orientation="vertical"
         android:layout_width="302dp"
         android:layout_height="120dp"
+        android:layout_below="@+id/name_credentials"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/linearLayout15"
@@ -232,32 +224,31 @@
                 android:layout_weight="1"
                 android:background="@color/grey"
                 android:fontFamily="@font/montserrat_regular"
+                android:gravity="start"
                 android:paddingLeft="16dp"
                 android:paddingStart="16dp"
-                android:gravity="start"
-                android:paddingTop="14dp"
+                android:paddingTop="16dp"
                 android:text="@string/create_password"
-                android:textSize="11sp" />
+                android:textSize="10sp" />
 
             <EditText
                 android:id="@+id/editText21"
                 android:layout_width="0dp"
-                android:textDirection="rtl"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingRight="8dp"
-                android:textSize="11sp"
-                android:textColor="#131313"
-                android:fontFamily="@font/montserrat_regular"
                 android:background="@color/grey"
-                android:inputType="textPassword" />
+                android:fontFamily="@font/montserrat_regular"
+                android:inputType="textPassword"
+                android:paddingRight="8dp"
+                android:textDirection="rtl"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
-            android:background="#c7c7c7"
-            />
+            android:background="#c7c7c7" />
+
         <LinearLayout
             android:id="@+id/linearLayout11"
             android:layout_width="match_parent"
@@ -276,30 +267,27 @@
                 android:fontFamily="@font/montserrat_regular"
                 android:paddingLeft="16dp"
                 android:paddingStart="16dp"
-                android:paddingTop="14dp"
+                android:paddingTop="16dp"
                 android:text="@string/confirm_password"
-                android:textSize="11sp" />
+                android:textSize="10sp" />
 
             <EditText
                 android:id="@+id/editText12"
                 android:layout_width="0dp"
-                android:textDirection="rtl"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="#131313"
-                android:textSize="11sp"
                 android:background="@color/grey"
-                android:inputType="textPassword"
                 android:fontFamily="@font/montserrat_regular"
-                android:paddingRight="8dp" />
+                android:inputType="textPassword"
+                android:paddingRight="8dp"
+                android:textDirection="rtl" />
         </LinearLayout>
 
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
-            android:background="#c7c7c7"
-            />
+            android:background="#c7c7c7" />
 
         <LinearLayout
             android:id="@+id/linearLayout18"
@@ -319,9 +307,9 @@
                 android:fontFamily="@font/montserrat_regular"
                 android:paddingLeft="16dp"
                 android:paddingStart="16dp"
-                android:paddingTop="14dp"
+                android:paddingTop="16dp"
                 android:text="@string/phone_number"
-                android:textSize="11sp" />
+                android:textSize="10sp" />
 
             <EditText
                 android:id="@+id/editText16"
@@ -329,12 +317,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/grey"
-                android:inputType="phone"
-                android:textColor="#131313"
-                android:textSize="11sp"
                 android:fontFamily="@font/montserrat_regular"
+                android:inputType="phone"
                 android:paddingRight="8dp"
-                android:maxLength="10"
                 android:textDirection="rtl" />
         </LinearLayout>
 
@@ -342,24 +327,24 @@
 
     <Button
         android:id="@+id/btn_signup"
-        android:layout_below="@+id/password_credentials"
         android:layout_width="302dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:textSize="11sp"
+        android:layout_below="@+id/password_credentials"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_background"
-        android:fontFamily="@font/montserrat_semibold"
+        android:fontFamily="@font/montserrat_regular"
         android:text="@string/sign_up_now"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/tv_registered"
-        android:layout_below="@+id/btn_signup"
         android:layout_width="153.3dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_signup"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:textSize="11sp"
         android:fontFamily="@font/pt_sans"
-        android:layout_centerHorizontal="true" />
+        android:textSize="11sp" />
 </RelativeLayout>
