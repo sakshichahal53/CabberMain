@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center"
-    android:backgroundTint="@color/white"
-    android:background="@drawable/radius_dialog_fragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#33111111">
 
     <LinearLayout
         android:layout_width="298dp"
         android:layout_height="416dp"
+        android:layout_gravity="center"
+        android:background="@drawable/radius_dialog_fragment"
         android:orientation="vertical">
 
-        <ImageView
+        <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_height="155dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/referral_code_man" />
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="155dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/referral_code_man" />
+        </android.support.v7.widget.CardView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,9 +37,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="35dp"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="Add referral code and get your first cab ride free"
@@ -61,6 +67,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/code_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -70,7 +77,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/tv_continue_dialog"
+                android:id="@+id/code_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="66dp"
@@ -80,4 +87,4 @@
                 android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

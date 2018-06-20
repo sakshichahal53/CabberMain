@@ -8,14 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="dialog_full_90" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="MyCustomNavDrawer" parent="TextAppearance.AppCompat"></style>
+    <style name="MyCustomNavDrawer" parent="TextAppearance.AppCompat"/>
 
-
-    -->
     <style name="NavigationTheme" parent="AppTheme">
         <item name="android:textSize">15sp</item>
         <item name="android:layout_marginBottom">04dp</item>

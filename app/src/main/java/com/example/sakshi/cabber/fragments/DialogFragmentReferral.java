@@ -1,5 +1,6 @@
 package com.example.sakshi.cabber.fragments;
 
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,14 +34,6 @@ public class DialogFragmentReferral extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        tv_conitnue_dialog = view.findViewById(R.id.tv_continue_dialog);
-        tv_conitnue_dialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getDialog().dismiss();
-            }
-        });
 
     }
 }
