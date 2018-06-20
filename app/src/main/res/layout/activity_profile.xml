@@ -20,10 +20,10 @@
             android:scaleType="fitXY" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/ic_arrow_back_black_24dp" />
 
         <RelativeLayout
@@ -39,6 +39,7 @@
                 android:background="@drawable/round_button_view" />
 
             <ImageButton
+                android:id="@+id/btn_back_from_profile"
                 android:layout_width="19dp"
                 android:layout_height="19dp"
                 android:src="@drawable/ic_create_black_24dp"

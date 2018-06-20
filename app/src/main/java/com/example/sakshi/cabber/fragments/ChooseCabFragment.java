@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,9 +64,9 @@ public class ChooseCabFragment extends android.app.Fragment {
             public void onClick(View view) {
                 android.app.FragmentManager fragmentManager = getFragmentManager();
                 android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.map_fragment, new ScheduleRideFragment(), "Ride Info");
-
+                fragmentTransaction.replace(R.id.map_fragment, new ScheduleRideFragment(), "Schedule Ride");
                 fragmentTransaction.addToBackStack(null);
+                fragmentManager.popBackStack("Choose Cab", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 fragmentTransaction.commit();
 
             }

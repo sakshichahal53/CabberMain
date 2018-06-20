@@ -31,6 +31,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sakshi.cabber.fragments.ScheduleRideFragment;
@@ -109,8 +110,7 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         AutoCompleteTextView mAutoComplete;
         AdapterView.OnItemClickListener mOriginalListener;
 
-        public AutoCompleteTextViewClickListener(AutoCompleteTextView acTextView,
-                                                 AdapterView.OnItemClickListener originalListener) {
+        public AutoCompleteTextViewClickListener(AutoCompleteTextView acTextView, AdapterView.OnItemClickListener originalListener) {
             mAutoComplete = acTextView;
             mOriginalListener = originalListener;
         }
@@ -145,8 +145,8 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
     private FusedLocationProviderClient fused_client;
     private ImageView img_my_location;
 
-    private LatLng source_latlng, destination_latlng, my_location_latlng;
-
+    private LatLng my_location_latlng;
+    private boolean dialog_shown = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,9 +169,6 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);            //Removing statusbar from Activity
         // schedule_ride_layout=findViewById(R.id.frame_layout_schedule);
 
-        FragmentManager fm = getFragmentManager();
-        DialogFragmentReferral dFragment = new DialogFragmentReferral();
-        dFragment.show(fm, "Dialog Fragment");                             //For adding dialogueFragment
 
         final Button btn_nav_bar = findViewById(R.id.btn_nav_bar);
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -226,24 +223,43 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onClick(View view) {
 
-
-                tv_from_auto_complete.setText("My Location");
-                setmarker.moveCamera(new LatLng(my_location.getLatitude(), my_location.getLongitude()), google_map);
-                setmarker.set_marker(source_info, destination_info, my_location_latlng, -1, google_map);
+                try {
+                    tv_from_auto_complete.setText("My Location");
+                    setmarker.moveCamera(new LatLng(my_location.getLatitude(), my_location.getLongitude()), google_map);
+                    setmarker.set_marker(source_info, destination_info, my_location_latlng, -1, google_map);
+                } catch (Exception e) {
+                    Toast.makeText(WhereToGoActivity.this, "Some Problem occured. Please Try again!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+        View headerview = navigation_view.getHeaderView(0);
+        TextView user_profile = (TextView) headerview.findViewById(R.id.goto_profile);
+        user_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(WhereToGoActivity.this, ProfileActivity.class));
+            }
+        });
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        DialogFragmentReferral dFragment = new DialogFragmentReferral();
+
+
+        if (!dialog_shown) {
+            dialog_shown = true;
+            FragmentManager fm = getFragmentManager();
+            dFragment.show(fm, "Dialog Fragment");             //For adding dialogueFragment
+        }
 
         if (!isLocationEnabled(WhereToGoActivity.this)) {
             AlertDialog.Builder builder;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                builder = new AlertDialog.Builder(WhereToGoActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                builder = new AlertDialog.Builder(WhereToGoActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
             } else {
                 builder = new AlertDialog.Builder(WhereToGoActivity.this);
             }
@@ -256,7 +272,6 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
                     ContextCompat.checkSelfPermission(WhereToGoActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
                             != PackageManager.PERMISSION_GRANTED)
                 Toast.makeText(this, "Please give app permissions in Settings for the app to work!", Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -265,7 +280,6 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         google_map = googleMap;
 
         try {
-
             boolean success = googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json));
             if (!success) {
                 Log.e(TAG, "Style parsing failed.");
@@ -273,7 +287,6 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Can't find style. Error: ", e);
         }
-
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -290,7 +303,6 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
 
                         google_map.setMinZoomPreference(10.0f);
                         google_map.moveCamera(CameraUpdateFactory.newLatLngZoom(my_location_latlng, 5));
-
                     }
                 }
 
@@ -303,7 +315,6 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             });
 
         }
-
     }
 
 
@@ -414,12 +425,10 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             try {
                 locationMode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
-
             } catch (Settings.SettingNotFoundException e) {
                 e.printStackTrace();
                 return false;
             }
-
             return locationMode != Settings.Secure.LOCATION_MODE_OFF;
 
         } else {
@@ -427,8 +436,8 @@ public class WhereToGoActivity extends AppCompatActivity implements OnMapReadyCa
             return !TextUtils.isEmpty(locationProviders);
         }
 
-
     }
+
 }
 
 

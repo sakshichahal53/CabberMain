@@ -1,11 +1,13 @@
 package com.example.sakshi.cabber.activities;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 
@@ -81,5 +83,22 @@ public class MyTripsActivity extends AppCompatActivity {
 
     public void go_to_upcoming(View view) {
         view_pager.setCurrentItem(1);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {     //for back button on actionbar
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                Intent intent = new Intent(MyTripsActivity.this, WhereToGoActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

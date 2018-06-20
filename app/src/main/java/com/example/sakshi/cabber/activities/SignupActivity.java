@@ -1,17 +1,21 @@
 package com.example.sakshi.cabber.activities;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.sakshi.cabber.R;
+import com.example.sakshi.cabber.others.SplashScreen;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -36,8 +40,11 @@ public class SignupActivity extends AppCompatActivity {
         tv_registered.setText(already_reg);
 
         Spannable signin = new SpannableString("Sign in");
+        StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
+        signin.setSpan(boldSpan, 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         signin.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorAccent)), 0, signin.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         tv_registered.append(signin);
+
 
         btn_signup = findViewById(R.id.btn_signup);
         btn_signup.setOnClickListener(new View.OnClickListener() {
@@ -49,5 +56,21 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {     //for back button on actionbar
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                Intent intent = new Intent(SignupActivity.this, SplashScreen.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

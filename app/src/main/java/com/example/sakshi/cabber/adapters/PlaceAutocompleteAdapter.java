@@ -109,6 +109,8 @@ public class PlaceAutocompleteAdapter
         textView1.setText(item.getPrimaryText(STYLE_BOLD));
         textView2.setText(item.getSecondaryText(STYLE_BOLD));
 
+        textView1.setTextSize(14);
+        textView2.setTextSize(11);
         return row;
     }
 

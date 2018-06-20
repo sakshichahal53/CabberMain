@@ -21,9 +21,10 @@
 
 
         <ImageButton
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginTop="25dp"
+            android:id="@+id/btn_back_from_refer"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginLeft="15dp"
             android:background="@drawable/ic_arrow_back_black_24dp" />
 
