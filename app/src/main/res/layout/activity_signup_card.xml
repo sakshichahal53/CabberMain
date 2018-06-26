@@ -239,19 +239,19 @@
 
     </LinearLayout>
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="302dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/card_credentials_container"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/button_background"
-            android:fontFamily="@font/montserrat_semibold"
-            android:textSize="11sp"
-            android:text="@string/add_card"
-            android:textColor="@color/white"
-           />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="302dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/card_credentials_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/montserrat_semibold"
+        android:textSize="11sp"
+        android:text="@string/add_card"
+        android:textColor="@color/white"
+        />
 
 
 

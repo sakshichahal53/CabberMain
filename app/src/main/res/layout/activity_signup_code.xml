@@ -122,6 +122,6 @@
         android:text="@string/next"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-         />
+        />
 
 </RelativeLayout>
