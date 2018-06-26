@@ -34,7 +34,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDUX0mKbLAHawb5ZDidL1n9wEVSg8rKqVs" />
-
+        <activity
+            android:name=".activities.SignupActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SignupCodeActivity"
             android:screenOrientation="portrait" />

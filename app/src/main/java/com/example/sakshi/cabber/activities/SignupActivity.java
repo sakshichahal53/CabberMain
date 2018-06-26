@@ -1,4 +1,4 @@
-package com.example.sakshi.cabber;
+package com.example.sakshi.cabber.activities;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.sakshi.cabber.R;
+import com.example.sakshi.cabber.activities.SignupCodeActivity;
 
 public class SignupActivity extends AppCompatActivity {
 
