@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.sakshi.cabber.activities.WhereToGoActivity">
+    tools:context="com.verbosetech.caber_native_rider.activities.WhereToGoActivity">
 
 
     <View
@@ -28,7 +28,7 @@
             class="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.example.sakshi.cabber.activities.WhereToGoActivity" />
+            tools:context="com.verbosetech.caber_native_rider.activities.WhereToGoActivity" />
 
 
         <LinearLayout

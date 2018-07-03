@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cabber</string>
+    <string name="app_name">Cabber(native)</string>
     <string name="google_maps_key">AIzaSyDUX0mKbLAHawb5ZDidL1n9wEVSg8rKqVs</string>
     <string name="login">LOGIN</string>
     <string name="password">Password</string>
