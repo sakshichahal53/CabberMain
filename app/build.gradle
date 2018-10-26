@@ -9,11 +9,14 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.verbosetech.caber_native_rider"
+
+        resValue 'string', "geo_api_key", "AIzaSyC4xQ0n-BwL_gODzdOTI6eqmzABT7XtF9Y"
+
         minSdkVersion 17
         targetSdkVersion 27
         multiDexEnabled true
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         vectorDrawables.useSupportLibrary = true // This line here
 
     }

@@ -1,146 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.verbosetech.caber_native_rider.activities.ReferNowActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".activities.ProfileActivity">
 
-
-    <RelativeLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-
-        <ImageView
-            android:id="@+id/profile_pic"
-            android:layout_width="match_parent"
-            android:layout_height="281dp"
-            android:src="@drawable/refer_now"
-            android:scaleType="fitXY" />
-
-
-        <ImageButton
-            android:id="@+id/btn_back_from_refer"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/ic_arrow_back_black_24dp" />
-
-        <View
-            android:id="@+id/statusBarBackground_refernow"
-            android:layout_width="match_parent"
-            android:layout_height="250dp" />
-
-
-        <RelativeLayout
-            android:id="@+id/code_container"
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="261dp">
+            app:contentScrim="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <View
-                android:layout_width="300dp"
-                android:layout_height="85dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/input_merged_edittext"
-                android:backgroundTint="@color/colorAccent" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="244dp"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/refer_now"
+                app:layout_collapseMode="parallax" />
 
-            <TextView
-                android:id="@+id/tv_your_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your Referral Code"
-                android:textColor="@color/white"
-                android:layout_marginTop="15dp"
-                android:textSize="11sp"
-                android:fontFamily="@font/montserrat_light"
-                android:layout_centerHorizontal="true" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/PopupOverlay" />
 
+        </android.support.design.widget.CollapsingToolbarLayout>
 
-            <TextView
-                android:layout_below="@+id/tv_your_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="523615"
-                android:textColor="@color/white"
-                android:layout_marginTop="8dp"
-                android:textSize="25sp"
-                android:fontFamily="@font/montserrat_medium"
-                android:layout_centerHorizontal="true"
-                android:letterSpacing="0.2" />
+    </android.support.design.widget.AppBarLayout>
 
-        </RelativeLayout>
-
-        <TextView
-            android:layout_below="@+id/code_container"
-            android:id="@+id/tv_refer_earn_"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Refer and Earn"
-            android:layout_marginLeft="31dp"
-            android:layout_marginTop="56dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/colorAccent" />
-
-
-        <TextView
-            android:layout_marginRight="35dp"
-            android:id="@+id/tv_share_with_family"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Share the referral code with your friends and family members and get 30% off on cab fare."
-            android:layout_below="@+id/tv_refer_earn_"
-            android:layout_marginTop="31dp"
-            android:layout_marginLeft="31dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:textSize="15sp" />
-
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:layout_below="@+id/tv_share_with_family"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="27dp"
-            android:layout_marginTop="53dp">
+            android:orientation="vertical">
 
-            <ImageButton
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:scaleType="fitXY"
-                android:background="@color/white"
-                android:src="@drawable/ic_facebook" />
-
-            <ImageButton
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+            <TextView
+                android:id="@+id/tv_refer_earn_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
-                android:scaleType="fitXY"
-                android:background="@color/white"
-                android:src="@drawable/ic_whatsapp" />
+                android:layout_marginTop="56dp"
+                android:layout_marginRight="32dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Refer and Earn"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
 
-            <ImageButton
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+
+            <TextView
+                android:id="@+id/tv_share_with_family"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
-                android:scaleType="fitXY"
-                android:background="@color/white"
-                android:src="@drawable/ic_twitter" />
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="32dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Share the referral code with your friends and family members and get 30% off on cab fare." />
 
-            <ImageButton
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:layout_marginLeft="32dp"
-                android:scaleType="fitXY"
-                android:background="@color/white"
-                android:src="@drawable/ic_more" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="53dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@color/white"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_facebook" />
+
+                <ImageButton
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="32dp"
+                    android:background="@color/white"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_whatsapp" />
+
+                <ImageButton
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="32dp"
+                    android:background="@color/white"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_twitter" />
+
+                <ImageButton
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="32dp"
+                    android:background="@color/white"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_more" />
+
+            </LinearLayout>
         </LinearLayout>
 
+    </android.support.v4.widget.NestedScrollView>
 
-    </RelativeLayout>
-</ScrollView>
+    <LinearLayout
+        android:id="@+id/code_container"
+        android:layout_width="300dp"
+        android:layout_height="85dp"
+        android:background="@drawable/round_primary"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_anchor="@id/appBarLayout"
+        app:layout_anchorGravity="bottom|center">
+
+        <TextView
+            android:id="@+id/tv_your_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_light"
+            android:text="Your Referral Code"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:letterSpacing="0.2"
+            android:text="523615"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

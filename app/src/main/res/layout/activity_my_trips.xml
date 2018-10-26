@@ -1,100 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.verbosetech.caber_native_rider.activities.MyTripsActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_mytrips"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="MY TRIPS"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-    </android.support.v7.widget.Toolbar>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 
-    <LinearLayout
-        android:padding="4sp"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:id="@+id/linear_layout1"
-        android:weightSum="2"
-        android:layout_marginTop="55dp"
-        android:background="@color/colorAccent">
-
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="PAST"
-            android:layout_gravity="center_vertical"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:background="@color/colorAccent"
-            android:textColor="@color/white"
-            android:onClick="go_to_past" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="UPCOMING"
-            android:layout_gravity="center_vertical"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:background="@color/colorAccent"
-            android:onClick="go_to_upcoming" />
-
-    </LinearLayout>
-
-
-    <View
-        android:id="@+id/past_view"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:layout_width="103dp"
-        android:layout_height="4dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginLeft="35dp"
-        android:background="@color/white"
-        android:visibility="gone" />
-
-    <View
-        android:id="@+id/upcoming_view"
-        android:layout_weight="1"
-        android:layout_width="103dp"
-        android:layout_height="4dp"
-        android:visibility="gone"
-        android:layout_marginTop="110dp"
-        android:layout_marginLeft="205dp"
-        android:background="@color/white" />
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabTextAppearance="@style/MyTabTextAppearance"
+        app:tabTextColor="@color/grey" />
 
 
     <android.support.v4.view.ViewPager
-        android:layout_below="@+id/linear_layout1"
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</RelativeLayout>
+</LinearLayout>

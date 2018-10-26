@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="138dp"
                 android:src="@drawable/silver_map"
-                android:scaleType="fitXY" />
+                android:scaleType="centerCrop" />
 
             <LinearLayout
                 android:weightSum="2"

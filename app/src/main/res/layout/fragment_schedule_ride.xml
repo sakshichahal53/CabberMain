@@ -1,107 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#73000000"
-    android:clickable="true">
+    android:clickable="true"
+    android:focusable="true">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/card_view_schedule_ride"
-        android:layout_marginTop="320dp"
-        android:layout_width="310dp"
+        style="@style/CardViewStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+        android:layout_gravity="bottom"
+        android:layout_margin="4dp">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:layout_marginTop="21dp"
-                android:textSize="11sp"
+                android:layout_margin="22dp"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="Schedule Pick up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
 
             <TextView
-                android:textAlignment="center"
-                android:layout_marginTop="29dp"
-                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="Select Date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textAlignment="center"
+                android:textSize="11sp" />
 
 
             <TextView
-                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="September 17, Sunday"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="18sp" />
 
             <TextView
-                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
-                android:textSize="11sp"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="Select Time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textAlignment="center"
+                android:textSize="11sp" />
 
             <TextView
-                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="5:00 pm"
+                android:textAlignment="center"
                 android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="22dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <Button
+                    android:layout_width="133dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/input_merged_edittext"
+                    android:backgroundTint="@color/white"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="CANCEl"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="11sp" />
 
-        <LinearLayout
-            android:layout_marginTop="220dp"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="6dp"
-            android:layout_height="48dp">
+                <Button
+                    android:id="@+id/btn_continue_ride"
+                    android:layout_width="133dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/input_merged_edittext"
+                    android:backgroundTint="@color/colorAccent"
+                    android:elevation="4dp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="CONFIRM"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+            </LinearLayout>
 
-            <Button
-                android:layout_marginLeft="15dp"
-                android:textSize="11sp"
-                android:text="CANCEl"
-                android:fontFamily="@font/montserrat_semibold"
-                android:textColor="@color/colorAccent"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/input_merged_edittext"
-                android:layout_width="133dp"
-                android:layout_height="40dp"
-                android:elevation="4dp" />
-
-            <Button
-                android:id="@+id/btn_continue_ride"
-                android:layout_marginLeft="15dp"
-                android:textSize="11sp"
-                android:text="CONFIRM"
-                android:fontFamily="@font/montserrat_semibold"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/colorAccent"
-                android:background="@drawable/input_merged_edittext"
-                android:layout_width="133dp"
-                android:layout_height="40dp"
-                android:elevation="4dp" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
 
-</RelativeLayout>
+</FrameLayout>

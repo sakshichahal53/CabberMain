@@ -6,12 +6,8 @@
     android:layout_height="match_parent"
     android:background="#73000000"
     android:clickable="true"
+    android:focusable="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    <View
-        android:id="@+id/status_bar_rideinfo"
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
 
     <include layout="@layout/complete_ride_info" />
 

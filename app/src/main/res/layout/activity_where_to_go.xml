@@ -9,12 +9,6 @@
     tools:context="com.verbosetech.caber_native_rider.activities.WhereToGoActivity">
 
 
-    <View
-        android:id="@+id/status_bar_map"
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
-
-
     <RelativeLayout
         android:id="@+id/mainFrame"
         android:layout_width="match_parent"
@@ -46,7 +40,7 @@
                 android:layout_width="40dp"
                 android:layout_height="11dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/where_togo_dot"
                 android:backgroundTint="@color/colorAccent" />
@@ -55,7 +49,7 @@
                 android:id="@+id/from_tv_autocomplete"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
                 android:layout_weight="3"
                 android:background="@null"
                 android:focusable="true"
@@ -63,7 +57,7 @@
                 android:fontFamily="@font/montserrat_regular"
                 android:hint="From"
                 android:marqueeRepeatLimit="marquee_forever"
-                android:paddingRight="8dp"
+                android:paddingEnd="8dp"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:textAlignment="viewStart"
@@ -74,10 +68,10 @@
                 android:id="@+id/img_my_location"
                 android:layout_width="40dp"
                 android:layout_height="20dp"
-                android:layout_marginRight="70dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="70dp"
                 android:layout_weight="1"
-                android:src="@drawable/map_nav" />
+                app:srcCompat="@drawable/map_nav" />
         </LinearLayout>
 
 
@@ -94,7 +88,7 @@
                 android:layout_width="20dp"
                 android:layout_height="11dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/where_togo_dot" />
 
 
@@ -127,7 +121,7 @@
             android:id="@+id/btn_nav_bar"
             android:layout_width="20dp"
             android:layout_height="18dp"
-            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
             android:layout_marginTop="41dp"
             android:background="@drawable/ic_menu_black_24dp" />
 
@@ -137,7 +131,7 @@
     <FrameLayout
         android:id="@+id/map_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation_view"
@@ -149,23 +143,17 @@
         app:itemIconTint="@color/colorAccent"
         app:menu="@menu/nav_menu">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_margin="12dp"
             android:clickable="false"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/logout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
-                android:gravity="end"
-                android:text="OpusLabs  "
-                android:textColor="@color/black"
-                android:textSize="11sp" />
-        </LinearLayout>
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="end"
+            android:text="OpusLabs  "
+            android:textColor="@color/black"
+            android:textSize="12sp" />
 
 
     </android.support.design.widget.NavigationView>

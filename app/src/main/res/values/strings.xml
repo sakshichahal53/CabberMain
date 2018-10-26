@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Cabber(native)</string>
-    <string name="google_maps_key">AIzaSyDUX0mKbLAHawb5ZDidL1n9wEVSg8rKqVs</string>
+    <string name="app_name">Cabber (native)</string>
     <string name="login">LOGIN</string>
     <string name="password">Password</string>
     <string name="phone_number">Phone Number</string>
@@ -20,13 +19,14 @@
     <string name="already_registered_">Already Registered?</string>
     <string name="sign_in">Sign In</string>
     <string name="card_number">Card Number</string>
-    <string name="expiry_date">Expiry Date</string>
-    <string name="cvv_code">CVV Code</string>
+    <string name="expiry_date">Expiry</string>
+    <string name="cvv_code">CVV</string>
     <string name="add_card">ADD CARD</string>
     <string name="name">Name</string>
     <string name="price">Price</string>
-    <string name="new_user_sign_up">New user? Sign up</string>
-    <string name="forgot_password">Forgot Password?</string>
+    <string name="new_user_sign_up">New user? Sign up!</string>
+    <string name="forgot_password">Forgot? Recover password!</string>
+    <string name="old_user_sign_in">Already registered? Sign in!</string>
 
 
     <string name="open">Open</string>
@@ -34,4 +34,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_trips">My Trips</string>
+    <string name="profile">Profile</string>
+    <string name="payments">Payments</string>
+    <string name="receipt">Receipt</string>
+    <string name="help">Help</string>
 </resources>
